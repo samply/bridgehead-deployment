@@ -1,0 +1,15 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 10s
+
+scrape_configs:
+- job_name: 'gba'
+
+  static_configs:
+  - targets: ['store:9100', 'connector:9100']
+
+  relabel_configs:
+  - source_labels: [__address__]
+    target_label: instance
+    regex: ([^:]+)(?:[:].+)
+    replacement: $1
