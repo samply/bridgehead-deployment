@@ -20,8 +20,8 @@ services:
       - samply
       - store-db
     ports:
-      - "${PORT_STORE:-8081}:8080"
-      - "${PORT_STORE_METRICS:-9101}:9100"
+      - 8081:8080
+      - 9101:9100
     depends_on:
       - store-db
     restart: always
@@ -42,7 +42,7 @@ services:
 
 
   connector:
-    image: martinbreu/connector:0
+    image: martinbreu/connector:5.6.0
     environment:
       MDR_URL: "https://mdr.germanbiobanknode.de/v3/api/mdr"
       HTTP_PROXY: ${PROXY_URL}
@@ -53,14 +53,15 @@ services:
       POSTGRES_DB: samply.connector
       POSTGRES_USER: samply
       POSTGRES_PASS: ${CONNECTOR_POSTGRES_PASS:-samply}
-      STORE_URL: "http://store:8080"
+      STORE_URL: http://store:8080
+      QUERY_LANGUAGE: ${CONNECTOR_QUERY_LANGUAGE:-QUERY}
       CATALINA_OPTS: ${CONNECTOR_CATALINA_OPTS:-"-Xmx1g"}
     networks:
       - samply
       - connector-db
     ports:
-      - "${PORT_CONNECTOR:-8082}:8080"
-      - "${PORT_CONNECTOR_METRICS:-9102}:9100"
+      - 8082:8080
+      - 9102:9100
     depends_on:
       - connector-db
     restart: always
@@ -85,7 +86,7 @@ services:
     networks:
       - samply
     ports:
-      - "${PORT_PROMETHEUS:-9090}:9090"
+      - 9090:9090
     volumes:
       - type: bind
         source: ./prometheus
@@ -102,7 +103,7 @@ services:
     networks:
       - samply
     ports:
-      - "${PORT_GRAFANA:-3000}:3000"
+      - 3000:3000
     volumes:
       - type: volume
         source: grafana-data
