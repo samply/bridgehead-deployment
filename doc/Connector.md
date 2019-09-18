@@ -38,7 +38,7 @@ Requirements:
 
 - [Database](#database)
 - [Tomcat](#tomcat)
-- The Connector webapp as .war file: [build yourselve](#build) or [download](https://maven.samply.de/nexus/content/repositories/oss-releases/de/samply/share-client/4.0.2/share-client-5.6.0.war)
+- The Connector webapp as .war file: [download](https://maven.samply.de/nexus/content/repositories/oss-releases/de/samply/share-client/4.0.2/share-client-5.6.0.war)
 
 
 Steps:
@@ -48,72 +48,6 @@ Steps:
 - Copy ROOT.war to ${tomcat.home}/webapps/ 
 
 Start tomcat by executing ${tomcat.home}/bin/startup.sh (Windows: startup.bat) or by running the tomcat-service if you [created one.](#tomcat-service-for-autostart)
-
-#### Docker build/run:
-
-If postgres connection errors occur, try your ip for POSTGRES_HOST. For all Environments, see `/src/docker/start.sh`
-
-Requirements: 
-* Connector war file: [build yourselve](#build) or [download](https://maven.samply.de/nexus/content/repositories/oss-releases/de/samply/share-client/4.0.2/share-client-5.5.0.war)
-* Dockerfile and configuration files in `src/docker`: 
-
-        git clone ssh://git@code.mitro.dkfz.de:7999/shar/samply.share.client.v2.git
-        cd samply.share.client.v2
-
-Create Network:
-
-    docker network create gba
-    
-Run Database:
-
-    docker rm pg-connector
-    
-    docker run \
-        --name pg-connector \
-        --network=gba \
-        -e POSTGRES_USER=samply \
-        -e POSTGRES_DB=samply.connector \
-        -e POSTGRES_PASSWORD=samply \
-        -p 5432:5432 \
-    postgres:9.6
-    
-Build Docker Image:
-
-    docker build . -t connector:latest
-    
-Run Connector    
-    
-    docker rm connector
-    
-    docker run \
-        --name=connector \
-        --network=gba \
-        -p 8082:8080 \
-        -e POSTGRES_HOST='pg-connector' \
-        -e POSTGRES_DB='samply.connector' \
-        -e POSTGRES_USER='samply' \
-        -e POSTGRES_PASS='samply' \
-        -e MDR_URL='https://mdr.germanbiobanknode.de/v3/api/mdr' \
-        -e STORE_URL='http://localhost:8080' \
-        -e QUERY_LANGUAGE='CQL' \
-        -e CATALINA_OPTS='"-Xmx2g"' \
-    connector:latest
-
-
-## Build
-
-Requirements:
-
-- Access to `code.mitro.dkfz.de`
-- [Java 8](#java)
-- [Database](#database)
-- Maven
-
-```
-git clone ssh://git@code.mitro.dkfz.de:7999/shar/samply.share.client.v2.git
-cd samply.share.client.v2
-mvn clean install -Psamply
-```
 
 
 ## Environment

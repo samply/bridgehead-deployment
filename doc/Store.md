@@ -28,7 +28,7 @@ Requirements:
 
 - [Database](#database)
 - [Tomcat](#tomcat)
-- The Store webapp as .war file: [build yourselve](#build) or [download](https://maven.samply.de/nexus/content/repositories/oss-releases/de/samply/store-rest/4.2.6/store-rest-4.2.6.war)
+- The Store webapp as .war file: [download](https://maven.samply.de/nexus/content/repositories/oss-releases/de/samply/store-rest/4.2.6/store-rest-4.2.6.war)
 
 Steps:
 
@@ -37,22 +37,6 @@ Steps:
 - Copy ROOT.war to ${tomcat.home}/webapps/ 
 
 Start tomcat by executing ${tomcat.home}/bin/startup.sh (Windows: startup.bat) or by running the tomcat-service if you [created one.](#tomcat-service-for-autostart)
-
-
-## Build
-
-Requirements:
-
-- Access to `code.mitro.dkfz.de`
-- [Java 8](#java)
-- [Database](#database)
-- Maven
-
-```
-git clone ssh://git@code.mitro.dkfz.de:7999/shar/samply.store.rest.git
-cd samply.store.rest
-mvn clean install
-```
 
 
 ## Environment
