@@ -3,7 +3,8 @@ services:
   store:
     image: martinbreu/store:0
     environment:
-      MDR_URL: "http://mdr.germanbiobanknode.de/v3/api/mdr"
+      MDR_URL: "https://mdr.germanbiobanknode.de/v3/api/mdr"
+      HTTP_PROXY: ${PROXY_URL}
       PROXY_URL: ${PROXY_URL}
       PROXY_USER: ${PROXY_USER}
       PROXY_PASS: ${PROXY_PASS}
