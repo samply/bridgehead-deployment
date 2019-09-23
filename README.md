@@ -23,7 +23,7 @@ This Docker Compose combines Store and Connector, using two Tomcat and two Postg
 
       docker run hello-world
 
-2. Bring all up with:
+2. The Docker Compose occupies the ports 8081, 8082, 3000, 9090, 9101 and 9102, bring all up with:
 
    ```
    git clone https://github.com/samply/bridgehead-deployment
@@ -55,7 +55,21 @@ docker volume rm bridgeheaddeployment_grafana-data
 
 
 ### Environment Variables
-The Docker Compose occupies the ports 8081, 8082, 3000, 9090, 9101 and 9102.
+
+| Name                     | Default  | Description                                                  |
+| ------------------------ | -------- | ------------------------------------------------------------ |
+| PROXY_URL                |          | URL of the HTTP proxy to use for outgoing connections, "url:port"; enables proxy usage if set |
+| PROXY_USER               |          | User of the proxy account                                    |
+| PROXY_PASS               |          | Password of the proxy account                                |
+|                          |          |                                                              |
+| STORE_CATALINA_OPTS      | "-Xmx1g" | JVM options for Tomcat of Store                              |
+| STORE_MDR_NAMESPACE      | mdr16    | Current namespace which changes after every update depending data-elements |
+| STORE_MDR_VALIDATION     | "true"   | Validation against MDR during Store import                   |
+| STORE_POSTGRES_PASS      | samply   | Database password for Store                                  |
+|                          |          |                                                              |
+| CONNECTOR_CATALINA_OPTS  | "-Xmx1g" | JVM options for Tomcat of Connector                          |
+| CONNECTOR_QUERY_LANGUAGE | QUERY    | `QUERY` for Samply Store, `CQL` for Blaze                    |
+| CONNECTOR_POSTGRES_PASS  | samply   | Database password for Connector                              |
 
 To change passwords and save your proxy configurations if necessary, create a file called `.env` in the repo directory, here you can save your environments like this:
 

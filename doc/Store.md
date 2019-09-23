@@ -4,7 +4,7 @@ The Store stores patient data as part of the [GBA-Bridgehead](https://github.com
 
 You can access the Store under `http://localhost:8081`. A simple test is fetching the import XSD under `http://localhost:8081/importXSD`.
 
-The inteface uses the OSSE XML schemas defined [here](http://schema.samply.de/osse/).
+The interface uses the OSSE XML schemas defined [here](http://schema.samply.de/osse/).
 
 Most work is to import patient/sample data into the store. You have to create a xml file which will be tested against our Metadata Repository.
 The current namespace, where all data-elements are defined and all GBA-Components work with, can be found under http://mdr.germanbiobanknode.de/view.xhtml?namespace=mdr16
@@ -45,10 +45,9 @@ Start tomcat by executing ${tomcat.home}/bin/startup.sh (Windows: startup.bat) o
 
 The Open-Source database Postresql 9.6 is used. The database connection uses the connection pool of Tomcat. 
 
-This webapp needs schema '**samply**' in the database '**samply.store**' under user '**samply**' and password '**samply**' under port `5432`. 
+This webapp needs schema '**samply**' in the database '**samply.store**' under user '**samply**' and password '**samply**' under port `5432`.
 
-To change these settings during build, search for these values in the **src/pom.xml** and adapt to your needs.
-During run, see context.xml (described under [Configurations](#Configurations)).
+To change these settings, see context.xml (described under [Configurations](#Configurations)).
 
 - Follow installation for port **5432**
 
@@ -94,7 +93,7 @@ Requirements:
 
    - [Java 8](#java)
 
-1. Download and unzip Tomcat: http://mirror.funkfreundelandshut.de/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.zip (eg. to /opt/tomcat-store)
+1. Download and unzip Tomcat: https://tomcat.apache.org/download-80.cgi
 
 2. Change ports: Every webapp has its own tomcat, so change ports for Store-Tomcat in ${tomcat.base}/conf/server.xml:
 
@@ -229,6 +228,6 @@ WantedBy=multi-user.target
 
 ​	Windows: 
 
-​		Follow installer: http://ftp.fau.de/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.exe
+​		Follow installer on: https://tomcat.apache.org/download-80.cgi
 
 ​		And check service (one per app/tomcat): http://www.ansoncheunghk.info/article/5-steps-install-multiple-apache-tomcat-instance-windows

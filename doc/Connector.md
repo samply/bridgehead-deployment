@@ -58,8 +58,7 @@ The Open-Source database Postresql 9.6 is used. The database connection uses the
 
 This webapp needs schema '**samply**' in the database '**samply.connector**' under user '**samply**' and password '**samply**' under port `5432`. 
 
-To change these settings during build, search for these values in the **src/pom.xml** and adapt to your needs.
-During run, see context.xml (described under [Configurations](#Configurations)).
+To change these settings, see context.xml (described under [Configurations](#Configurations)).
 
 - Follow installation for port **5432**
 
@@ -104,7 +103,7 @@ Requirements:
 
 - [Java 8](#java)
 
-1. Download and unzip: http://mirror.funkfreundelandshut.de/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.zip (eg. to /opt/tomcat-connector)
+1. Download and unzip Tomcat: https://tomcat.apache.org/download-80.cgi
 
 2. Change ports: Every webapp has its own tomcat, so change ports for Store-Tomcat in ${tomcat.base}/conf/server.xml:
 
@@ -302,6 +301,6 @@ WantedBy=multi-user.target
 
 ​	Windows: 
 
-​		Follow installer: http://ftp.fau.de/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.exe
+​		Follow installer on: https://tomcat.apache.org/download-80.cgi
 
 ​		And check service (one per app/tomcat): http://www.ansoncheunghk.info/article/5-steps-install-multiple-apache-tomcat-instance-windows
