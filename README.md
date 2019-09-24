@@ -1,5 +1,5 @@
 # Bridgehead Deployment
-Makes your Biobank visible at https://search.germanbiobanknode.de to make samples easily accessible for researcher to help [making new treatments possible.](bbmri-eric.eu)
+Makes your Biobank visible on the [Sample Locator](https://search.germanbiobanknode.de) to make samples easily accessible for researcher to help [making new treatments possible.](https://www.bbmri-eric.eu)
 
 This Docker Compose combines Store and Connector, using two Tomcat and two Postgres instances, monitored by Prometheus and visualized by [Grafana](#grafana).
 
@@ -12,46 +12,40 @@ This Docker Compose combines Store and Connector, using two Tomcat and two Postg
 
 **Connect your Biobank**:
 
-- Install and run the Bridgehead ([Docker-Compose](#docker-compose) which is recommended, for manual deployment see READMEs of [Store](doc/Store.md) and [Connector](doc/Connector.md).)
-- Create xml and [import into Store](IMPORT.md)
-- Connect to central [Sample Locator](#connect-sample-locator)
+- Install and run the Bridgehead (Recommended: [Docker-Compose](#docker-compose), for manual deployment see READMEs of [Store](doc/Store.md) and [Connector](doc/Connector.md).)
+- [Create xml and import](doc/IMPORT.md) into Store
+- [Connect](#connect-sample-locator) to central Sample Locator
 
 
 ## Docker-Compose
-1. [Install Docker](https://docs.docker.com/install/)
-   And test Docker in any command line with:
+1. [Install Docker](https://docs.docker.com/install/) and test with:
 
-      docker run hello-world
+        docker run hello-world
 
 2. The Docker Compose occupies the ports 8081, 8082, 3000, 9090, 9101 and 9102, bring all up with:
 
-   ```
-   git clone https://github.com/samply/bridgehead-deployment
-   cd bridgehead-deployment
-   docker-compose up
-   ```
+        git clone https://github.com/samply/bridgehead-deployment
+        cd bridgehead-deployment
+        docker-compose up
 
 Docker compose will start all containers and print the logs to the console.
 
-If you see database connection errors from the store or the connector, open a second terminal and run `docker-compose stop` followed by `docker-compose start`. Database connection problems should only occur at the first start because the store and the connector doesn't wait for the databases to be ready. Both try to connect at startup which might be to early.
+If you see database connection errors of Store or Connector, open a second terminal and run `docker-compose stop` followed by `docker-compose start`. Database connection problems should only occur at the first start because the store and the connector doesn't wait for the databases to be ready. Both try to connect at startup which might be to early.
 
 If one needs only one of them, on can bring up only the specific one with:
-```sh
-docker-compose up store
-docker-compose up connector
-```
+
+    docker-compose up store
+    docker-compose up connector
 
 To stop Store and Connector:
-```
-docker-compose down
-```
+
+    docker-compose down
 
 And to empty databases:
-```
-docker volume rm bridgeheaddeployment_store-db-data
-docker volume rm bridgeheaddeployment_connector-db-data
-docker volume rm bridgeheaddeployment_grafana-data
-```
+
+    docker volume rm bridgeheaddeployment_store-db-data
+    docker volume rm bridgeheaddeployment_connector-db-data
+    docker volume rm bridgeheaddeployment_grafana-data
 
 
 ### Environment Variables
@@ -73,26 +67,26 @@ docker volume rm bridgeheaddeployment_grafana-data
 
 To change passwords and save your proxy configurations if necessary, create a file called `.env` in the repo directory, here you can save your environments like this:
 
-```
-STORE_POSTGRES_PASS=TopSecret
-CONNECTOR_POSTGRES_PASSWORD=samply
-PROXY_URL=117.156.15.21:7808
-PROXY_USER=Max
-PROXY_PASS=VerySecret
-```
+    STORE_POSTGRES_PASS=TopSecret
+    CONNECTOR_POSTGRES_PASSWORD=samply
+    PROXY_URL=117.156.15.21:7808
+    PROXY_USER=Max
+    PROXY_PASS=VerySecret
 
 
 ## Connect Sample Locator
 
-You can access the Connector under http://localhost:8082 and login under <http://localhost:8082/login.xhtml> (default credentials are **admin**, **adminpass**). If the Store runs while logging in the first time, the default credentials of the Store get deactivated. From now on, Connector and Store share the same credentials.
+You can access the Connector under http://localhost:8082 and login under <http://localhost:8082/login.xhtml> (default credentials are **admin**, **adminpass**). If the Store runs while logging in the first time, the default credentials of the Store get deactivated. From now on, Connector and Store share the same credentials. For details see README of [Connector](doc/Connector.md)
 
 Register a Sample Locator under <http://localhost:8082/admin/broker_list.xhtml>
 
 - Broker Adresse = <https://search.germanbiobanknode.de/broker/>
 - Ihre Email Adresse = your email address to get the API-Key for registration
-- Automatisch antworten = Nur Anzahl (default, so you answer automatically with number of samples)
+- Automatisch antworten = Nur Anzahl (default, so you answer automatically with number of samples and donors)
 
-You will receive an email with API-key generated by our Sample Locator, paste these eight numbers into the provided field and press "ok". Contact us by sending an email from the registered email address to itc_intern@germanbiobanknode.de and let us know the name of your Biobank. An ITC will validate your request so researcher can find your samples.
+You will receive an email with API-key generated by the Sample Locator, paste these eight numbers into the provided field and press "ok".
+
+Contact us by sending an email from the registered email address to itc_intern@germanbiobanknode.de and let us know the name of your Biobank. An ITC will validate your request, so researcher can find your samples.
 
 To see all executed queries, create a new user at <http://localhost:8082/admin/user_list.xhtml>, logout, and login as normal user.
 

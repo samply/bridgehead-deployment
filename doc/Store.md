@@ -4,7 +4,7 @@ The Store stores patient data as part of the [GBA-Bridgehead](https://github.com
 
 You can access the Store under `http://localhost:8081`. A simple test is fetching the import XSD under `http://localhost:8081/importXSD`.
 
-The interface uses the OSSE XML schemas defined [here](http://schema.samply.de/osse/).
+The interface uses the OSSE XML schemas defined [here](http://schema.samply.de/osse).
 
 Most work is to import patient/sample data into the store. You have to create a xml file which will be tested against our Metadata Repository.
 The current namespace, where all data-elements are defined and all GBA-Components work with, can be found under http://mdr.germanbiobanknode.de/view.xhtml?namespace=mdr16
