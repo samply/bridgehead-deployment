@@ -12,7 +12,7 @@ This Docker Compose combines Store and Connector, using two Tomcat and two Postg
 
 **Connect your Biobank**:
 
-- Install and run the Bridgehead (Recommended: [Docker-Compose](#docker-compose), for manual deployment see READMEs of [Store](doc/Store.md) and [Connector](doc/Connector.md).)
+- Install and run the Bridgehead (recommendation: [Docker-Compose](#docker-compose). For manual deployment on Windows/Linux see [Store](doc/Store.md) and [Connector](doc/Connector.md).)
 - [Create xml and import](doc/IMPORT.md) into Store
 - [Connect](#connect-sample-locator) to central Sample Locator
 
@@ -20,13 +20,13 @@ This Docker Compose combines Store and Connector, using two Tomcat and two Postg
 ## Docker-Compose
 1. [Install Docker](https://docs.docker.com/install/) and test with:
 
-        docker run hello-world
+    docker run hello-world
 
 2. The Docker Compose occupies the ports 8081, 8082, 3000, 9090, 9101 and 9102, bring all up with:
 
-        git clone https://github.com/samply/bridgehead-deployment
-        cd bridgehead-deployment
-        docker-compose up
+       git clone https://github.com/samply/bridgehead-deployment
+       cd bridgehead-deployment
+       docker-compose up
 
 Docker compose will start all containers and print the logs to the console.
 
