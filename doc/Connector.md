@@ -26,11 +26,64 @@ To register a Searchbroker, see [Bridgehead-Deployment](https://github.com/sampl
 
 ### Docker
 
-Use the Docker-Compose of the [GBA-Bridgehead](https://github.com/samply/bridgehead-deployment) and run only the Connector with:
+Docker network:
 
-```
-docker-compose up connector
-```
+    docker network create gba
+
+Database:
+
+    docker run \
+    --name pg-connector \
+    --network=gba \
+    -e POSTGRES_USER=samply \
+    -e POSTGRES_DB=samply.connector \
+    -e POSTGRES_PASSWORD=samply \
+    -p 5432:5432 \
+    postgres:9.6
+
+Connector:
+
+    docker run \
+    --name=connector \
+    --network=gba \
+    -p 8082:8080 \
+    -e POSTGRES_HOST='pg-connector' \
+    -e POSTGRES_DB='samply.connector' \
+    -e POSTGRES_USER='samply' \
+    -e POSTGRES_PASS='samply' \
+    -e MDR_URL='https://mdr.germanbiobanknode.de/v3/api/mdr' \
+    -e STORE_URL='http://store:8080' \
+    -e QUERY_LANGUAGE='QUERY' \
+    -e CATALINA_OPTS='"-Xmx2g"' \
+    martinbreu/connector:5.6.0
+
+
+### All Environments of Connector container
+
+| Name                | Default  | Description                                                  |
+| ------------------- | -------- | ------------------------------------------------------------ |
+| POSTGRES_HOST       |          | Database base url                                            |
+| POSTGRES_PORT       | 5432     | Database port                                                |
+| POSTGRES_DB         |          | Database name                                                |
+| POSTGRES_USER       |          | Database user                                                |
+| POSTGRES_PASS       |          | Database password                                            |
+| HTTP_PROXY          |          | URL of the HTTP proxy to use for outgoing connections, "url:port"; enables proxy usage if set |
+| PROXY_USER          |          | User of the proxy account                                    |
+| PROXY_PASS          |          | Password of the proxy account                                |
+| STORE_URL           |          | Base url to Store                                            |
+| MDR_URL             |          | Url of the MDR server                                        |
+| OPERATOR_FIRST_NAME |          | First name from the bridgehead admin                         |
+| OPERATOR_LAST_NAME  |          | Last name from the bridgehead admin                          |
+| OPERATOR_EMAIL      |          | Email from the bridgehead admin                              |
+| OPERATOR_PHONE      |          | Phone number from the bridgehead admin                       |
+| MAIL_HOST           |          | Host of email server                                         |
+| MAIL_PORT           | 25       | Port of email server                                         |
+| MAIL_PROTOCOL       | smtp     | Protocol of email server                                     |
+| MAIL_FROM_ADDRESS   |          | Address for email sender                                     |
+| MAIL_FROM_NAME      |          | Name for email sender                                        |
+| CATALINA_OPTS       | "-Xmx1g" | JVM options for Tomcat of Connector                          |
+| QUERY_LANGUAGE      | QUERY    | `QUERY` for Samply Store, `CQL` for Blaze                    |
+
 
 ### Manual
 

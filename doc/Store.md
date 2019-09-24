@@ -16,11 +16,59 @@ Instructions for import can be found [here (IMPORT.md)](IMPORT.md)
 
 ### Docker
 
-Use the Docker-Compose of the [GBA-Bridgehead](https://github.com/samply/bridgehead-deployment) and run only the Store with:
+Docker network:
 
-```
-docker-compose up store
-```
+    docker network create gba
+
+Database:
+
+    docker run \
+    --name pg-store \
+    --network=gba \
+    -e POSTGRES_USER=samply \
+    -e POSTGRES_DB=samply.store \
+    -e POSTGRES_PASSWORD=samply \
+    -p 5432:5432 \
+    postgres:9.6
+
+Store:
+
+    docker run \
+    --name=store \
+    --network=gba \
+    -p 8081:8080 \
+    -e MDR_URL="https://mdr.germanbiobanknode.de/v3/api/mdr" \
+    -e MDR_NAMESPACE=mdr16 \
+    -e MDR_MAP="<dataElementGroup name='biobank'>urn:mdr16:dataelementgroup:1:1</dataElementGroup><dataElementGroup name='collection'>urn:mdr16:dataelementgroup:2:1</dataElementGroup><dataElementGroup name='sample'>urn:mdr16:dataelementgroup:3:1</dataElementGroup><dataElementGroup name='sampleContext'>urn:mdr16:dataelementgroup:4:1</dataElementGroup><dataElementGroup name='donor'>urn:mdr16:dataelementgroup:5:1</dataElementGroup><dataElementGroup name='event'>urn:mdr16:dataelementgroup:6:1</dataElementGroup>" \
+    -e MDR_VALIDATION="true" \
+    -e POSTGRES_HOST='pg-store' \
+    -e POSTGRES_PORT=5432 \
+    -e POSTGRES_DB='samply.store' \
+    -e POSTGRES_USER='samply' \
+    -e POSTGRES_PASS='samply' \
+    -e CATALINA_OPTS='"-Xmx2g"' \
+    martinbreu/store:0
+
+
+### All Environments of Store container
+
+| Name           | Default | Description                                                  |
+| -------------- | ------- | ------------------------------------------------------------ |
+| POSTGRES_HOST  |         | Database base url                                            |
+| POSTGRES_PORT  |         | Database port                                                |
+| POSTGRES_DB    |         | Database name                                                |
+| POSTGRES_USER  |         | Database user                                                |
+| POSTGRES_PASS  |         | Database password                                            |
+| PROXY_URL      |         | URL of the HTTP proxy to use for outgoing connections, "url:port"; enables proxy usage if set |
+| PROXY_USER     |         | User of the proxy account                                    |
+| PROXY_PASS     |         | Password of the proxy account                                |
+| MDR_NAMESPACE  |         | Current used namespace in MDR                                |
+| MDR_URL        |         | Url of the MDR server                                        |
+| MDR_MAP        |         |                                                              |
+| MDR_VALIDATION |         |                                                              |
+| CATALINA_OPTS  |         | JVM options for Tomcat of Store                              |
+
+
 
 ### Manual
 
