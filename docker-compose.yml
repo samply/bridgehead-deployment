@@ -43,7 +43,7 @@ services:
 
 
   connector:
-    image: martinbreu/connector:5.6.0
+    image: martinbreu/connector:5.6.1
     environment:
       MDR_URL: "https://mdr.germanbiobanknode.de/v3/api/mdr"
       HTTP_PROXY: ${PROXY_URL}
