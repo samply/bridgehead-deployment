@@ -1,12 +1,9 @@
-
 # Introduction
 Samply.Store is implemented as a web service and does not have a graphical UI yet. Data is modelled as XML and transferred via REST interface.
 
 
-
 # Data model
-![Datamodel](datamodel-sample.png)
-
+![Datamodel](datamodel.png)
 
 
 # REST interface
@@ -33,7 +30,6 @@ Importing an XML
 ```
 curl -H "Content-Type:application/xml" -d @export.xml http://USERNAME:PASSWORD@localhost:8081/import
 ```
-
 
 
 # Structure of the XML
@@ -65,13 +61,11 @@ Samply.Store automatically generates a consecutive number for each record (id in
 Important: The ids from the XML (id) and foreign key (biobankId) refer to the entries in the XML. These determine the 1 to n relationships between the entities and the XSD is used to check whether all foreign keys are valid. However, no content validation takes place. 
 
 
-
 ## Check
 
 There is currently no way to check the data in the store. However, you can do this directly on the PostgreSQL database. This can be done by using the tool "pgAdmin", which is not included in the installation and has to be installed manually.
 
 But the Connector displays each found patient and creates diagrams if you select an inquiry under http://localhost:8082/user/inquiries_list.xhtml and search for "Ergebnisliste anfordern", wait a few minutes.
-
 
 
 ## Update behavior
@@ -107,7 +101,6 @@ key="xyz:def:ghi:1:5"
 key="xyz:def:ghi:2:5"       
 key="xyz:def:ghi:3:5"       
 key="xyz:def:ghi:4:5"       
-
 
 
 # Example import file 

@@ -6,7 +6,7 @@ scrape_configs:
 - job_name: 'gba'
 
   static_configs:
-  - targets: ['store:9100', 'connector:9100']
+  - targets: ['store:9101', 'connector:9102']
 
   relabel_configs:
   - source_labels: [__address__]
