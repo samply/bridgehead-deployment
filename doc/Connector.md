@@ -91,7 +91,7 @@ Requirements:
 
 - [Database](#database)
 - [Tomcat](#tomcat)
-- The Connector webapp as .war file: [download](https://maven.samply.de/nexus/content/repositories/oss-releases/de/samply/share-client/5.6.1/share-client-5.6.1.war)
+- The Connector webapp as .war file: [download](https://maven.samply.de/nexus/content/repositories/oss-releases/de/samply/share-client/5.6.2/share-client-5.6.2.war)
 
 
 Steps:
