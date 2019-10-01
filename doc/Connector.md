@@ -145,9 +145,9 @@ To change these settings, see context.xml (described under [Configurations](#Con
     ```
     (sudo su postgres)
     psql
-    CREATE DATABASE "samply.searchbroker";
+    CREATE DATABASE "samply.connector";
     CREATE USER samply WITH PASSWORD 'samply';
-    GRANT ALL PRIVILEGES ON DATABASE "samply.searchbroker" to samply;
+    GRANT ALL PRIVILEGES ON DATABASE "samply.connector" to samply;
     ```
 
 ### Tomcat
