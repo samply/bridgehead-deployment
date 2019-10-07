@@ -80,7 +80,7 @@ You can access the Connector under http://localhost:8082 and login under <http:/
 
 Register a Sample Locator under <http://localhost:8082/admin/broker_list.xhtml>
 
-- Broker Adresse = <https://search.germanbiobanknode.de/broker/>
+- Broker Adresse = <https://samplelocator.bbmri.de/broker/>
 - Ihre Email Adresse = your email address to get the API-Key for registration
 - Automatisch antworten = Nur Anzahl (default, so you answer automatically with number of samples and donors)
 
