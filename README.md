@@ -26,7 +26,7 @@ This Docker Compose combines Store and Connector, using two Tomcat and two Postg
 
        git clone https://github.com/samply/bridgehead-deployment
        cd bridgehead-deployment
-       docker-compose up
+       docker-compose up -d
 
 Docker compose will start all containers and print the logs to the console.
 
