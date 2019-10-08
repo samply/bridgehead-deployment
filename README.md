@@ -13,6 +13,7 @@ This Docker Compose combines Store and Connector, using two Tomcat and two Postg
 **Connect your Biobank**:
 
 - Install and run the Bridgehead (recommendation: [Docker-Compose](#docker-compose). For manual deployment on Windows/Linux see [Store](doc/Store.md) and [Connector](doc/Connector.md).)
+- Set credentials for [Connector-Store-Authorization](#connector-store-authorization)
 - [Create xml and import](doc/IMPORT.md) into Store
 - [Connect](#connect-sample-locator) to central Sample Locator
 
@@ -74,11 +75,22 @@ To change passwords and save your proxy configurations if necessary, create a fi
     PROXY_PASS=VerySecret
 
 
+## Connector-Store-Authorization
+
+Before the first login on the Connector UI, the Store accepts for import **local_admin:local_admin**.
+After the first login on the Connector UI and have the Store running, the credentials for **local_admin** get deactivated for import.
+
+* Login under <http://localhost:8082/login.xhtml> (default credentials are **admin**, **adminpass**).
+* To change password for securing the Store, select the username `admin` in the right upper corner and select "Passwort ändern".
+* Under <http://localhost:8082/admin/credentials_list.xhtml>, for "Ziel" select `Lokales Datenmanagement`, for "Benutzername" `admin` and for "Passwort" your password.
+* From now on, the Store accepts for any connection only `admin` and your password.
+
+To add users to the Store database, create one on the Connector UI under <http://localhost:8082/admin/user_list.xhtml> and login at least once.
+
+
 ## Connect Sample Locator
 
-You can access the Connector under http://localhost:8082 and login under <http://localhost:8082/login.xhtml> (default credentials are **admin**, **adminpass**). If the Store runs while logging in the first time, the default credentials of the Store get deactivated. From now on, Connector and Store share the same credentials. For details see README of [Connector](doc/Connector.md)
-
-Register a Sample Locator under <http://localhost:8082/admin/broker_list.xhtml>
+Login at <http://localhost:8082/login.xhtml>, register the Sample Locator under <http://localhost:8082/admin/broker_list.xhtml>
 
 - Broker Adresse = <https://samplelocator.bbmri.de/broker/>
 - Ihre Email Adresse = your email address to get the API-Key for registration

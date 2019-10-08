@@ -3,21 +3,7 @@
 The Connector (or "Samply Share Client" or "Teiler" ) connects Store and [Searchbroker](https://code.mitro.dkfz.de/projects/SHAR/repos/samply.share.broker.rest) as part of the [Bridgehead-Deployment](https://github.com/samply/bridgehead-deployment).
 Currently the [classic Store](https://code.mitro.dkfz.de/projects/STOR/repos/samply.store.rest) is used, in future [Blaze](https://github.com/life-research/blaze).
 
-You can access the Connector under http://localhost:8082 and login under <http://localhost:8082/login.xhtml> (default credentials are **admin**, **adminpass**).
-By default the Connector and Store use the same default credentials (**local_admin**, **local_admin**).
-
-To change the default credentials for Connector & Store add a new user to the Connector and add credentials satisfying 
-
-|Key|Value|
-|---|---|
-|Target| Local Datamanagement|
-|CredentialType| Basic |
-|Username| [username of new user] |
-|Password| [password of new user] |
-|Domain||
-|Workstation||
-
-If the Store runs while logging in the first time with this new user, the default credentials of the Store get deactivated. From now on, Connector and Store share the same new credentials instead of the old ones.
+For Connector-Store-Authorization, see [Bridgehead-Deployment](https://github.com/samply/bridgehead-deployment#connector-store-authorization).
 
 To register a Searchbroker, see [Bridgehead-Deployment](https://github.com/samply/bridgehead-deployment#connect-sample-locator).
 
