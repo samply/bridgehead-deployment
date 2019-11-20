@@ -1,134 +1,76 @@
-version: '3.2'
+version: '3.4'
 services:
   store:
-    image: martinbreu/store:0
+    container_name: "store"
+    image: "liferesearch/blaze:0.7.0-alpha.9"
     environment:
-      MDR_URL: "https://mdr.germanbiobanknode.de/v3/api/mdr"
-      HTTP_PROXY: ${PROXY_URL}
-      PROXY_URL: ${PROXY_URL}
-      PROXY_USER: ${PROXY_USER}
-      PROXY_PASS: ${PROXY_PASS}
-      MDR_NAMESPACE: ${STORE_MDR_NAMESPACE:-mdr16}
-      MDR_MAP: "<dataElementGroup name='biobank'>urn:mdr16:dataelementgroup:1:1</dataElementGroup><dataElementGroup name='collection'>urn:mdr16:dataelementgroup:2:1</dataElementGroup><dataElementGroup name='sample'>urn:mdr16:dataelementgroup:3:1</dataElementGroup><dataElementGroup name='sampleContext'>urn:mdr16:dataelementgroup:4:1</dataElementGroup><dataElementGroup name='donor'>urn:mdr16:dataelementgroup:5:1</dataElementGroup><dataElementGroup name='event'>urn:mdr16:dataelementgroup:6:1</dataElementGroup>"
-      MDR_VALIDATION: ${STORE_MDR_VALIDATION:-"true"}
-      POSTGRES_HOST: store-db
-      POSTGRES_PORT: 5432
-      POSTGRES_DB: samply.store
-      POSTGRES_USER: samply
-      POSTGRES_PASS: ${STORE_POSTGRES_PASS:-samply}
-      CATALINA_OPTS: ${STORE_CATALINA_OPTS:-"-Xmx1g"}
+      BASE_URL: "http://store:8080"
+      DATABASE_URI: "datomic:free://store-db:4334/dev?password=datomic"
     networks:
-      - samply
-      - store-db
+      - "samply"
+      - "store-db"
     ports:
-      - 8081:8080
-      - 9101:9100
+      - "8080:8080"
     depends_on:
-      - store-db
-    restart: always
-
+      - "store-db"
+    restart: "always"
   store-db:
-    image: postgres:9.6
+    container_name: "store-db"
+    image: "akiel/datomic-free:0.9.5703-2"
     environment:
-      POSTGRES_USER: samply
-      POSTGRES_PASSWORD: ${STORE_POSTGRES_PASS:-samply}
-      POSTGRES_DB: samply.store
+      ALT_HOST: "store-db"
+      XMS: "-Xms1g"
+      XMX: "-Xmx1g"
+      ADMIN_PASSWORD: "admin"
+      DATOMIC_PASSWORD: "datomic"
     networks:
-      - store-db
+      - "store-db"
     volumes:
-      - type: volume
-        source: store-db-data
-        target: /var/lib/postgresql/data
-    restart: always
-
+      - "store-db-data:/data"
+    restart: "always"
 
   connector:
-    image: martinbreu/connector:5.6.2
+    container_name: "connector"
+    image: "martinbreu/connector:5.6.2"
     environment:
+      POSTGRES_HOST: "connector-db"
+      POSTGRES_DB: "samply.connector"
+      POSTGRES_USER: "samply"
+      POSTGRES_PASS: "samply"
+      STORE_URL: "http://store:8080/fhir"
+      QUERY_LANGUAGE: "CQL"
       MDR_URL: "https://mdr.germanbiobanknode.de/v3/api/mdr"
-      HTTP_PROXY: ${PROXY_URL}
-      PROXY_USER: ${PROXY_USER}
-      PROXY_PASS: ${PROXY_PASS}
-      POSTGRES_HOST: connector-db
-      POSTGRES_PORT: 5432
-      POSTGRES_DB: samply.connector
-      POSTGRES_USER: samply
-      POSTGRES_PASS: ${CONNECTOR_POSTGRES_PASS:-samply}
-      STORE_URL: http://store:8080
-      QUERY_LANGUAGE: ${CONNECTOR_QUERY_LANGUAGE:-QUERY}
-      CATALINA_OPTS: ${CONNECTOR_CATALINA_OPTS:-"-Xmx1g"}
     networks:
-      - samply
-      - connector-db
+      - "samply"
+      - "connector-db"
     ports:
-      - 8082:8080
-      - 9102:9100
+      - "8082:8080"
     depends_on:
-      - connector-db
-    restart: always
-
+      - "connector-db"
+    restart: "always"
   connector-db:
-    image: postgres:9.6
+    container_name: "connector-db"
+    image: "postgres:9.6"
     environment:
-      POSTGRES_USER: samply
-      POSTGRES_PASSWORD: ${CONNECTOR_POSTGRES_PASS:-samply}
-      POSTGRES_DB: samply.connector
+      POSTGRES_USER: "samply"
+      POSTGRES_PASSWORD: "samply"
+      POSTGRES_DB: "samply.connector"
     networks:
-      - connector-db
+      - "connector-db"
     volumes:
-      - type: volume
-        source: connector-db-data
-        target: /var/lib/postgresql/data
-    restart: always
-
-
-  prometheus:
-    image: prom/prometheus:v2.3.2
-    networks:
-      - samply
-    ports:
-      - 9090:9090
-    volumes:
-      - type: bind
-        source: ./prometheus
-        target: /etc/prometheus
-        read_only: true
-    restart: always
-
-
-  grafana:
-    image: grafana/grafana:5.2.2
-    environment:
-      GF_SESSION_PROVIDER: memory
-      GF_LOG_MODE: console
-    networks:
-      - samply
-    ports:
-      - 3000:3000
-    volumes:
-      - type: volume
-        source: grafana-data
-        target: /var/lib/grafana
-      - type: bind
-        source: ./grafana/dashboards
-        target: /var/lib/grafana-dashboards
-      - type: bind
-        source: ./grafana/provisioning
-        target: /etc/grafana/provisioning
-        read_only: true
-    restart: always
-
+      - "connector-db-data:/var/lib/postgresql/data"
+    restart: "always"
 
 networks:
   samply:
-    driver: bridge
+    driver: "bridge"
   store-db:
-    driver: bridge
+    driver: "bridge"
   connector-db:
-    driver: bridge
-
+    driver: "bridge"
 
 volumes:
   store-db-data:
+    name: "store-db-data"
   connector-db-data:
-  grafana-data:
+    name: "connector-db-data"
