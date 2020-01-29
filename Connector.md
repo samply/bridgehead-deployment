@@ -13,7 +13,7 @@
 * Tomcat
     * Look if ports `8082`, `8002`, `8202` are free, otherwise choose different ones in next step:
         * "Command Prompt" as administrator: `netstat -ab`
-    * Follow instructions until "Configuration": [Download](http://ftp.halifax.rwth-aachen.de/apache/tomcat/tomcat-8/v8.5.47/bin/apache-tomcat-8.5.47.exe)
+    * Follow instructions until "Configuration": [Download "32-bit/64-bit Windows Service Installer"](https://tomcat.apache.org/download-80.cgi)
         * `8202` for "Server shutdown Port"
         * `8082` for "HTTP/1.1 Connector Port"
         * `8002` for "AJP" 
