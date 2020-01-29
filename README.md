@@ -28,7 +28,7 @@ Makes your Biobank findable over the [Sample Locator](https://samplelocator.bbmr
       cd bridgehead-deployment
 
 
-* The `docker-compose.yml` is as small as possible. Modify this file to enable proxy for instance, see below, and bring all up with:
+* The `docker-compose.yml` is as small as possible. Modify this file to enable proxy for instance (see below) and bring all up with:
 
       docker-compose up -d
 
@@ -66,8 +66,8 @@ Makes your Biobank findable over the [Sample Locator](https://samplelocator.bbmr
 
 * If one needs only one of them
 
-      docker-compose up store
-      docker-compose up connector
+      docker-compose up store -d
+      docker-compose up connector -d
 
 * To destroy all services (which keeps databases):
   

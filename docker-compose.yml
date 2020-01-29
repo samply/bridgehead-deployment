@@ -2,7 +2,7 @@ version: '3.4'
 services:
   store:
     container_name: "store"
-    image: "liferesearch/blaze:0.7.0-rc.1"
+    image: "samply/blaze:0.7.0"
     environment:
       BASE_URL: "http://store:8080"
       DATABASE_URI: "datomic:free://store-db:4334/dev?password=datomic"
@@ -31,7 +31,7 @@ services:
 
   connector:
     container_name: "connector"
-    image: "martinbreu/connector:5.6.2"
+    image: "martinbreu/connector:5.6.4"
     environment:
       POSTGRES_HOST: "connector-db"
       POSTGRES_DB: "samply.connector"

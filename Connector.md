@@ -20,10 +20,9 @@
         * `Tomcat8Connector` for "Service name"
 
 * Webapp
-    * [Download](https://maven.samply.de/nexus/content/repositories/oss-releases/de/samply/share-client/5.6.2/share-client-5.6.2.war) Connector war file
-    * Rename share-client-5.6.2.war to ROOT.war
-    * Delete all folder in `${tomcat}/webapps/`
-    * Copy ROOT.war to `${tomcat}/webapps/`
+    * [Download](https://github.com/samply/bridgehead-deployment/raw/master/share-client-5.6.4.war) Connector war file
+    * Delete all folders in `${tomcat}/webapps/`
+    * Rename share-client-5.6.4.war to ROOT.war and move to `${tomcat}/webapps/`
     * Startup Tomcat once: Open "Command Prompt" as administrator
         * `${tomcat}/bin/startup.bat`
         * `${tomcat}/bin/shutdown.bat`
@@ -115,8 +114,8 @@ WantedBy=multi-user.target" > /etc/systemd/system/tomcat-connector.service'
 ```
 sudo rm -r /opt/tomcat-connector/webapps/*
 cd /tmp
-wget https://maven.samply.de/nexus/content/repositories/oss-releases/de/samply/share-client/5.6.2/share-client-5.6.2.war
-mv /tmp/share-client-5.6.2.war /opt/tomcat-connector/webapps/ROOT.war
+wget https://github.com/samply/bridgehead-deployment/raw/master/share-client-5.6.4.war
+mv /tmp/share-client-5.6.4.war /opt/tomcat-connector/webapps/ROOT.war
 sudo systemctl daemon-reload
 sudo systemctl start tomcat-connector
 sudo systemctl stop tomcat-connector
