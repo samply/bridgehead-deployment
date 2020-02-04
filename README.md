@@ -1,15 +1,36 @@
+[sl]: <https://samplelocator.bbmri.de>
+[bbmri]: <http://www.bbmri-eric.eu>
+[docker]: <https://docs.docker.com/install>
+[profile]: <https://simplifier.net/bbmri.de>
+[talend]: <https://wiki.verbis.dkfz.de/pages/viewpage.action?pageId=76351392>
+[validate]: <https://github.com/samply/bbmri-fhir-ig/blob/master/bbmri-ig/input/pagecontent/Validation.md>
+
+[register]: <#connector-settings>
+[compose]: <#docker-compose>
+
+[import-store]: <https://alexanderkiel.gitbook.io/blaze/importing-data>
+[depl-store]: <https://alexanderkiel.gitbook.io/blaze/deployment/manual-deployment>
+[env-store]: <https://alexanderkiel.gitbook.io/blaze/deployment/environment-variables>
+
+[depl-connector]: <Connector.md>
+[connector-user]: <http://localhost:8082/admin/user_list.xhtml>
+[connector-login]: <http://localhost:8082/login.xhtml>
+[connector-register]: <http://localhost:8082/admin/broker_list.xhtml>
+[connector-credentials]: <http://localhost:8082/admin/credentials_list.xhtml>
+
+
 # Bridgehead Deployment
-Makes your Biobank findable over the [Sample Locator](https://samplelocator.bbmri.de), so samples are easily accessible for researcher to [make new treatments possible](http://www.bbmri-eric.eu).
+Makes your Biobank findable over the [Sample Locator][sl], so samples are easily accessible for researcher to [make new treatments possible][bbmri].
 
 
 
 * **Requirements**:
     * 16 GB RAM, 50 GB disk space (recommendation, depends on amount of data)
     * Outgoing http and https. Proxies are supported. No VPN or incoming ports required. Firewall to restrict access from internal network is recommended (Or secure Store with Basic-Auth)
-    * Install and run Bridgehead with [**Docker-Compose**](#docker-compose).
-        * For **Manual Deployment** on Windows/Linux see guides for [Store](https://alexanderkiel.gitbook.io/blaze/deployment/manual-deployment) and [Connector](Connector.md).
-    * Create FHIR bundles satisfying our [profile](https://simplifier.net/bbmri.de) (e.g. with [Talend Open Studio](https://wiki.verbis.dkfz.de/pages/viewpage.action?pageId=76351392)), [validate](https://github.com/samply/bbmri-fhir-ig/blob/master/bbmri-ig/input/pagecontent/Validation.md) and [upload](https://alexanderkiel.gitbook.io/blaze/importing-data) to Store.
-    * [Register](#connector-settings) at central [Sample Locator](https://samplelocator.bbmri.de)
+    * Install and run Bridgehead with [**Docker-Compose**][compose]
+        * For **Manual Deployment** on Windows/Linux see guides for [Store][man-store] and [Connector][man-connector]
+    * Create FHIR bundles satisfying our [profile][profile] (e.g. with [Talend Open Studio][talend]), [validate][validate] and [import][import] to Store
+    * [Register][register] at central [Sample Locator][sl]
 
 
 
@@ -17,18 +38,18 @@ Makes your Biobank findable over the [Sample Locator](https://samplelocator.bbmr
 
 ## Docker-Compose
 
-* [Install Docker](https://docs.docker.com/install/) and test with:
+* [Install Docker][docker] and test with
 
       docker run hello-world
 
 
-* Download repository:
+* Download repository
 
       git clone https://github.com/samply/bridgehead-deployment
       cd bridgehead-deployment
 
 
-* The `docker-compose.yml` is as small as possible. Modify this file to enable proxy for instance (see below) and bring all up with:
+* The `docker-compose.yml` is as small as possible. Modify this file to enable proxy for instance (see below) and bring all up with
 
       docker-compose up -d
 
@@ -38,7 +59,7 @@ Makes your Biobank findable over the [Sample Locator](https://samplelocator.bbmr
 #### Optional:
 
 * Docker Environments
-    * [Store](https://alexanderkiel.gitbook.io/blaze/deployment/environment-variables)
+    * [Store][env-store]
     * Connector:
 
 | Name           | Default | Description                                                   |
@@ -84,8 +105,8 @@ Makes your Biobank findable over the [Sample Locator](https://samplelocator.bbmr
 
 ## Connector-Settings
 
-* To register a Sample Locator, login in Connector-UI at <http://localhost:8082/login.xhtml> (default usr=admin, pwd=adminpass)
-    * Go to <http://localhost:8082/admin/broker_list.xhtml>
+* To register a Sample Locator, login at [Connector-UI][connector-login] (default usr=admin, pwd=adminpass)
+    * Go to [register page][connector-register]
         * `https://samplelocator.bbmri.de/broker/` for "Broker Adresse"
         * **email address** to get the API-Key for registration for "Ihre Email Adresse"
         * `Nur Anzahl` (default, so you answer automatically with number of samples and donors) for "Automatisch antworten"
@@ -96,9 +117,9 @@ Makes your Biobank findable over the [Sample Locator](https://samplelocator.bbmr
 
 
 #### Optional:
-* To see all executed queries, create a new user at <http://localhost:8082/admin/user_list.xhtml>, logout and login with this normal user.
+* To see all executed queries, create a [new user][connector-user], logout and login with this normal user.
 * To set Store-Basic-Auth-credentials in Connector (as default one `Lokales Datenmanagement` with dummy values was generated)
-    * Login in Connector-UI at <http://localhost:8082/login.xhtml> (default usr=admin, pwd=adminpass)
-    * Open <http://localhost:8082/admin/credentials_list.xhtml>
+    * Login at [Connector-UI][connector-login] (default usr=admin, pwd=adminpass)
+    * Open [credentials page][connector-credentials]
         - Delete all instances of`Lokales Datenmanagement`
         - for "Ziel" select `Lokales Datenmanagement`, provide decrypted CREDENTIALS in "Benutzername" and "Passwort", select "Zugangsdaten hinzufügen"

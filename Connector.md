@@ -1,7 +1,11 @@
+[1]: <https://www.enterprisedb.com/downloads/postgres-postgresql-downloads>
+[2]: <https://tomcat.apache.org/download-80.cgi>
+[3]: <https://github.com/samply/bridgehead-deployment/releases/download/v1.0/share-client-5.6.4.war>
+
 # Windows
 
 * Database
-    * Follow instructions: [Download](https://www.enterprisedb.com/thank-you-downloading-postgresql?anid=1256732)
+    * Follow instructions: [Download Postgres 9.6][1]
     * Open pgAdmin, "Servers", rightclick "PostgreSQL 9.6", "Create":
         * "Login/Group Role..."
             * "General": Name=`samply`
@@ -13,14 +17,14 @@
 * Tomcat
     * Look if ports `8082`, `8002`, `8202` are free, otherwise choose different ones in next step:
         * "Command Prompt" as administrator: `netstat -ab`
-    * Follow instructions until "Configuration": [Download "32-bit/64-bit Windows Service Installer"](https://tomcat.apache.org/download-80.cgi)
+    * Follow instructions until "Configuration": [Download Tomcat "32-bit/64-bit Windows Service Installer"][2]
         * `8202` for "Server shutdown Port"
         * `8082` for "HTTP/1.1 Connector Port"
         * `8002` for "AJP" 
         * `Tomcat8Connector` for "Service name"
 
 * Webapp
-    * [Download](https://github.com/samply/bridgehead-deployment/raw/master/share-client-5.6.4.war) Connector war file
+    * [Download Connector][3] .war file
     * Delete all folders in `${tomcat}/webapps/`
     * Rename share-client-5.6.4.war to ROOT.war and move to `${tomcat}/webapps/`
     * Startup Tomcat once: Open "Command Prompt" as administrator
@@ -111,11 +115,12 @@ WantedBy=multi-user.target" > /etc/systemd/system/tomcat-connector.service'
         * `sudo ufw allow 8082/tcp`
 
 * Webapp
+
+[Download Connector][3] .war file, eg. with `wget <URL>`
 ```
 sudo rm -r /opt/tomcat-connector/webapps/*
-cd /tmp
-wget https://github.com/samply/bridgehead-deployment/raw/master/share-client-5.6.4.war
-mv /tmp/share-client-5.6.4.war /opt/tomcat-connector/webapps/ROOT.war
+mv share-client-5.6.4.war /opt/tomcat-connector/webapps/ROOT.war
+
 sudo systemctl daemon-reload
 sudo systemctl start tomcat-connector
 sudo systemctl stop tomcat-connector
