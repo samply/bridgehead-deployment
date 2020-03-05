@@ -70,7 +70,7 @@ Makes your Biobank findable over the [Sample Locator][sl], so samples are easily
 | POSTGRES_USER  |         | Authorized username for database                              |
 | POSTGRES_PASS  |         | Password of authorized user                                   |
 |                |         |                                                               |
-| HTTP_PROXY     |         | Proxy server and port for outbound HTTP requests (`url:port`) |
+| HTTP_PROXY     |         | Proxy server and port for outbound HTTP requests, e.g. "proxy.example.de:8080" |
 | PROXY_USER     |         | Proxy server user, if authentication is needed.               |
 | PROXY_PASS     |         | Proxy server password, if authentication is needed.           |
 |                |         |                                                               |
