@@ -9,10 +9,10 @@
 [compose]: <#docker-compose>
 
 [import-store]: <https://alexanderkiel.gitbook.io/blaze/importing-data>
-[depl-store]: <https://alexanderkiel.gitbook.io/blaze/deployment/manual-deployment>
+[man-store]: <https://alexanderkiel.gitbook.io/blaze/deployment/manual-deployment>
 [env-store]: <https://alexanderkiel.gitbook.io/blaze/deployment/environment-variables>
 
-[depl-connector]: <Connector.md>
+[man-connector]: <Connector.md>
 [connector-user]: <http://localhost:8082/admin/user_list.xhtml>
 [connector-login]: <http://localhost:8082/login.xhtml>
 [connector-register]: <http://localhost:8082/admin/broker_list.xhtml>
@@ -29,8 +29,8 @@ Makes your Biobank findable over the [Sample Locator][sl], so samples are easily
     * Outgoing http and https. Proxies are supported. No VPN or incoming ports required. Firewall to restrict access from internal network is recommended (Or secure Store with Basic-Auth)
     * Install and run Bridgehead with [**Docker-Compose**][compose]
         * For **Manual Deployment** on Windows/Linux see guides for [Store][man-store] and [Connector][man-connector]
-    * Create FHIR bundles satisfying our [profile][profile] (e.g. with [Talend Open Studio][talend]), [validate][validate] and [import][import] to Store
-    * [Register][register] at central [Sample Locator][sl]
+    * Create FHIR bundles satisfying our [profile][profile] (e.g. with [Talend Open Studio][talend]), [validate][validate] and [import][import-store] to Store
+    * [Register][register] the search engine [Sample Locator][sl]
 
 
 
@@ -83,6 +83,7 @@ Makes your Biobank findable over the [Sample Locator][sl], so samples are easily
 
 
 
+
 * If you see database connection errors of Store or Connector, open a second terminal and run `docker-compose stop` followed by `docker-compose start`. Database connection problems should only occur at the first start because the store and the connector doesn't wait for the databases to be ready. Both try to connect at startup which might be to early.
 
 * If one needs only one of them
@@ -106,12 +107,12 @@ Makes your Biobank findable over the [Sample Locator][sl], so samples are easily
 ## Connector-Settings
 
 * To register a Sample Locator, login at [Connector-UI][connector-login] (default usr=admin, pwd=adminpass)
-    * Go to [register page][connector-register]
-        * `https://samplelocator.bbmri.de/broker/` for "Broker Adresse"
-        * **email address** to get the API-Key for registration for "Ihre Email Adresse"
-        * `Nur Anzahl` (default, so you answer automatically with number of samples and donors) for "Automatisch antworten"
-        * Select "Beitreten" to receive an email with the API key to paste under "Status", select "Aktivieren"
-        * To unlock, **send an email** to `feedback@germanbiobanknode.de` with `used email address` and `desired biobank name`
+    * Go to [register page][connector-register] and enter these values:
+        * "Broker Adresse": `https://samplelocator.bbmri.de/broker/`
+        * "Ihre Email Adresse": your email address to get an API key
+        * "Automatisch antworten": `Nur Anzahl` (default, so you answer automatically with number of samples and donors)
+        * Select "Beitreten" to receive an email with the API key to paste under "Status", then select "Aktivieren"
+        * At least, **send an email** to `feedback@germanbiobanknode.de` with `your used email address` and `desired biobank name`
 
 
 
