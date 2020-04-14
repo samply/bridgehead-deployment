@@ -3,7 +3,8 @@
 [docker]: <https://docs.docker.com/install>
 [profile]: <https://simplifier.net/bbmri.de>
 [talend]: <https://wiki.verbis.dkfz.de/pages/viewpage.action?pageId=76351392>
-[validate]: <https://github.com/samply/bbmri-fhir-ig/blob/master/bbmri-ig/input/pagecontent/Validation.md>
+[validate]: <https://github.com/samply/bbmri-fhir-ig/blob/master/input/pagecontent/Validation.md>
+             
 
 [register]: <#connector-settings>
 [compose]: <#docker-compose>
