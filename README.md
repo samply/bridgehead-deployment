@@ -5,7 +5,6 @@
 [talend]: <https://wiki.verbis.dkfz.de/pages/viewpage.action?pageId=76351392>
 [validate]: <https://github.com/samply/bbmri-fhir-ig/blob/master/input/pagecontent/Validation.md>
              
-
 [register]: <#connector-settings>
 [compose]: <#docker-compose>
 
@@ -18,6 +17,8 @@
 [connector-login]: <http://localhost:8082/login.xhtml>
 [connector-register]: <http://localhost:8082/admin/broker_list.xhtml>
 [connector-credentials]: <http://localhost:8082/admin/credentials_list.xhtml>
+
+[quality-ui]:<https://github.com/samply/blaze-quality-reporting-ui>
 
 
 # Bridgehead Deployment
@@ -55,9 +56,20 @@ Makes your Biobank findable over the [Sample Locator][sl], so samples are easily
       docker-compose up -d
 
 
+## Connector-Settings
+
+* To register a Sample Locator, login at [Connector-UI][connector-login] (default usr=admin, pwd=adminpass)
+    * Go to [register page][connector-register] and enter these values:
+        * "Broker Adresse": `https://samplelocator.bbmri.de/broker/`
+        * "Ihre Email Adresse": your email address to get an API key
+        * "Automatisch antworten": `Nur Anzahl` (default, so you answer automatically with number of samples and donors)
+        * Select "Beitreten" to receive an email with the API key to paste under "Status", then select "Aktivieren"
+        * At least, **send an email** to `feedback@germanbiobanknode.de` with `your used email address` and `desired biobank name`
 
 
 #### Optional:
+
+* [FHIR Quality Reporting Authoring UI: ][quality-ui]Open http://localhost:8000 
 
 * Docker Environments
     * [Store][env-store]
@@ -83,8 +95,6 @@ Makes your Biobank findable over the [Sample Locator][sl], so samples are easily
 
 
 
-
-
 * If you see database connection errors of Store or Connector, open a second terminal and run `docker-compose stop` followed by `docker-compose start`. Database connection problems should only occur at the first start because the store and the connector doesn't wait for the databases to be ready. Both try to connect at startup which might be to early.
 
 * If one needs only one of them
@@ -101,26 +111,9 @@ Makes your Biobank findable over the [Sample Locator][sl], so samples are easily
       docker volume rm store-db-data
       docker volume rm connector-db-data
 
-
-
-
-
-## Connector-Settings
-
-* To register a Sample Locator, login at [Connector-UI][connector-login] (default usr=admin, pwd=adminpass)
-    * Go to [register page][connector-register] and enter these values:
-        * "Broker Adresse": `https://samplelocator.bbmri.de/broker/`
-        * "Ihre Email Adresse": your email address to get an API key
-        * "Automatisch antworten": `Nur Anzahl` (default, so you answer automatically with number of samples and donors)
-        * Select "Beitreten" to receive an email with the API key to paste under "Status", then select "Aktivieren"
-        * At least, **send an email** to `feedback@germanbiobanknode.de` with `your used email address` and `desired biobank name`
-
-
-
-
-#### Optional:
 * To see all executed queries, create a [new user][connector-user], logout and login with this normal user.
-* To set Store-Basic-Auth-credentials in Connector (as default one `Lokales Datenmanagement` with dummy values was generated)
+
+* To set Store-Basic-Auth-credentials in Connector (as default `Lokales Datenmanagement` with dummy values was generated)
     * Login at [Connector-UI][connector-login] (default usr=admin, pwd=adminpass)
     * Open [credentials page][connector-credentials]
         - Delete all instances of`Lokales Datenmanagement`

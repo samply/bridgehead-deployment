@@ -29,6 +29,15 @@ services:
       - "store-db-data:/data"
     restart: "always"
 
+  blaze-quality-reporting-ui:
+    container_name: "blaze-quality-reporting-ui"
+    image: "samply/blaze-quality-reporting-ui:0.2.0"
+    networks:
+      - "store-db"
+    ports:
+      - "8000:80"
+    restart: "always"
+
   connector:
     container_name: "connector"
     image: "martinbreu/connector:5.6.4"
