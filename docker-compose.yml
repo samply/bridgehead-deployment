@@ -6,6 +6,7 @@ services:
     environment:
       BASE_URL: "http://store:8080"
       DATABASE_URI: "datomic:free://store-db:4334/dev?password=datomic"
+      JVM_OPTS: "-server -Xmx4g -XX:+UseG1GC"
     networks:
       - "samply"
       - "store-db"
