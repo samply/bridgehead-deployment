@@ -1,14 +1,7 @@
 [sl]: <https://samplelocator.bbmri.de>
 [bbmri]: <http://www.bbmri-eric.eu>
 [docker]: <https://docs.docker.com/install>
-[profile]: <https://simplifier.net/bbmri.de>
-[talend]: <https://wiki.verbis.dkfz.de/pages/viewpage.action?pageId=76351392>
-[validate]: <https://github.com/samply/bbmri-fhir-ig/blob/master/input/pagecontent/Validation.md>
-             
-[register]: <#connector-settings>
-[compose]: <#docker-compose>
 
-[import-store]: <https://alexanderkiel.gitbook.io/blaze/importing-data>
 [man-store]: <https://alexanderkiel.gitbook.io/blaze/deployment/manual-deployment>
 [env-store]: <https://alexanderkiel.gitbook.io/blaze/deployment/environment-variables>
 
@@ -22,20 +15,14 @@
 
 
 # Bridgehead Deployment
+
+
+## Goal
 Makes your Biobank findable over the [Sample Locator][sl], so samples are easily accessible for researcher to [make new treatments possible][bbmri].
 
 
-
-* **Requirements**:
-    * 16 GB RAM, 50 GB disk space (recommendation, depends on amount of data)
-    * Outgoing http and https. Proxies are supported. No VPN or incoming ports required. Firewall to restrict access from internal network is recommended (Or secure Store with Basic-Auth)
-    * Install and run Bridgehead with [**Docker-Compose**][compose]
-        * For **Manual Deployment** on Windows/Linux see guides for [Store][man-store] and [Connector][man-connector]
-    * Create FHIR bundles satisfying our [profile][profile] (e.g. with [Talend Open Studio][talend]), [validate][validate] and [import][import-store] to Store
-    * [Register][register] the search engine [Sample Locator][sl]
-
-
-
+## Requirements
+For data protection concept, server requirements, validation or import instructions, see https://samply.github.io/bbmri-fhir-ig/howtoJoin.html#general-requirements
 
 
 ## Docker-Compose
@@ -44,21 +31,16 @@ Makes your Biobank findable over the [Sample Locator][sl], so samples are easily
 
       docker run hello-world
 
-
 * Download repository
 
       git clone https://github.com/samply/bridgehead-deployment
       cd bridgehead-deployment
 
-
 * The `docker-compose.yml` is as small as possible. Modify this file to enable proxy for instance (see below) and bring all up with
 
       docker-compose up -d
 
-
-## Connector-Settings
-
-* To register a Sample Locator, login at [Connector-UI][connector-login] (default usr=admin, pwd=adminpass)
+* To connect to the Sample Locator, login at [Connector-UI][connector-login] (default usr=admin, pwd=adminpass)
     * Go to [register page][connector-register] and enter these values:
         * "Broker Adresse": `https://samplelocator.bbmri.de/broker/`
         * "Ihre Email Adresse": your email address to get an API key
@@ -67,13 +49,26 @@ Makes your Biobank findable over the [Sample Locator][sl], so samples are easily
         * At least, **send an email** to `feedback@germanbiobanknode.de` with `your used email address` and `desired biobank name`
 
 
-#### Optional:
+## Manual installation
 
-* [FHIR Quality Reporting Authoring UI: ][quality-ui]Open http://localhost:8000 
+* [Store][man-store]
+* [Connector][man-connector]
+* Connect the Sample Locator (see above)
 
-* Docker Environments
-    * [Store][env-store]
-    * Connector:
+
+## Optional configuration:
+
+#### Installed components:
+
+* Store: http://localhost:8080/fhir
+* Connector: http://localhost:8082
+* [FHIR Quality Reporting Authoring UI][quality-ui]: http://localhost:8000
+
+
+#### Docker Environments
+
+* [Store][env-store]
+* Connector:
 
 | Name           | Default | Description                                                   |
 | -------------- | ------- | ------------------------------------------------------------- |
@@ -93,6 +88,25 @@ Makes your Biobank findable over the [Sample Locator][sl], so samples are easily
 |                |         |                                                               |
 | CATALINA_OPTS  |         | JVM options                                                   |
 
+
+#### Proxy example
+Add Environments in docker-compose.yml (remove user and password environments if not available):
+"http://proxy.example.de:8080", user "testUser", password "testPassword"
+      
+      version: '3.4'
+        services:
+          store:
+            environment:
+               PROXY_HOST: "http://proxy.example.de"
+               PROXY_PORT: "8080"
+               PROXY_USER: "testUser"
+               PROXY_PASSWORD: "testPassword"
+        ...
+          connector:
+            environment:
+                HTTP_PROXY: "http://proxy.example.de:8080"
+                PROXY_USER: "testUser"
+                PROXY_PASS: "testPassword"
 
 
 * If you see database connection errors of Store or Connector, open a second terminal and run `docker-compose stop` followed by `docker-compose start`. Database connection problems should only occur at the first start because the store and the connector doesn't wait for the databases to be ready. Both try to connect at startup which might be to early.
