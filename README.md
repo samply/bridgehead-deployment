@@ -12,6 +12,8 @@
 [connector-login]: <http://localhost:8082/login.xhtml>
 [connector-register]: <http://localhost:8082/admin/broker_list.xhtml>
 [connector-credentials]: <http://localhost:8082/admin/credentials_list.xhtml>
+[connector-config]: <http://localhost:8082/admin/configuration.xhtml>
+[connector-jobs]: <http://localhost:8082/admin/job_list.xhtml>
 
 [quality-ui]: <http://localhost:8081>
 [quality-ui-github]:<https://github.com/samply/blaze-quality-reporting-ui>
@@ -51,6 +53,8 @@ For data protection concept, server requirements, validation or import instructi
         * Select "Beitreten" to receive an email with the API key to paste under "Status", then select "Aktivieren"
         * At least, **send an email** to `feedback@germanbiobanknode.de` with `your used email address` and `desired biobank name`
 
+* Activate Monitoring (Heidelberg will send a test query periodically to send you an email if errors occur)
+    * [Open][connector-config] to enable three buttons under "Übermittlung von Metadaten" and scroll down to save with button "Speichern"
 
 ## Manual installation
 
@@ -59,13 +63,56 @@ For data protection concept, server requirements, validation or import instructi
 * Connect the Sample Locator (see above)
 
 
-## Optional configuration:
-
 #### Installed components:
 
 * Store: [store]
 * Connector: [connector]
-* [FHIR Quality Reporting Authoring UI][quality-ui-github]: [quality-ui]
+* [FHIR Quality Reporting Authoring UI][quality-ui-github]: [Open][quality-ui]
+
+
+## Optional configuration:
+
+#### Proxy example
+Add Environments in docker-compose.yml (remove user and password environments if not available):
+"http://proxy.example.de:8080", user "testUser", password "testPassword"
+      
+      version: '3.4'
+      services:
+        store:
+          container_name: "store"
+          image: "samply/blaze:0.8.0-beta.3"
+          environment:
+            BASE_URL: "http://store:8080"
+            DB_DIR: "/app/data/db"
+            JAVA_TOOL_OPTIONS: "-Xms4g -Xmx4g -XX:+UseG1GC"
+            PROXY_HOST: "http://proxy.example.de"
+            PROXY_PORT: "8080"
+            PROXY_USER: "testUser"
+            PROXY_PASSWORD: "testPassword"
+          networks:
+            - "samply"
+            
+      .......
+      
+      connector:
+          container_name: "connector"
+          image: "martinbreu/connector:5.6.4"
+          environment:
+            POSTGRES_HOST: "connector-db"
+            POSTGRES_DB: "samply.connector"
+            POSTGRES_USER: "samply"
+            POSTGRES_PASS: "samply"
+            STORE_URL: "http://store:8080/fhir"
+            QUERY_LANGUAGE: "CQL"
+            MDR_URL: "https://mdr.germanbiobanknode.de/v3/api/mdr"
+            HTTP_PROXY: "http://proxy.example.de:8080"
+            PROXY_USER: "testUser"
+            PROXY_PASS: "testPassword
+          networks:
+            - "samply"
+            
+      .......
+      
 
 
 #### Docker Environments
@@ -92,44 +139,6 @@ For data protection concept, server requirements, validation or import instructi
 | CATALINA_OPTS  |         | JVM options                                                   |
 
 
-#### Proxy example
-Add Environments in docker-compose.yml (remove user and password environments if not available):
-"http://proxy.example.de:8080", user "testUser", password "testPassword"
-      
-      version: '3.4'
-      services:
-        store:
-          container_name: "store"
-          image: "samply/blaze:0.8.0-beta.3"
-          environment:
-            BASE_URL: "http://store:8080"
-            DB_DIR: "/app/data/db"
-            JAVA_TOOL_OPTIONS: "-Xms4g -Xmx4g -XX:+UseG1GC"
-            PROXY_HOST: "http://proxy.example.de"
-            PROXY_PORT: "8080"
-            PROXY_USER: "testUser"
-            PROXY_PASSWORD: "testPassword"
-          networks:
-            - "samply"
-      .......
-      connector:
-          container_name: "connector"
-          image: "martinbreu/connector:5.6.4"
-          environment:
-            POSTGRES_HOST: "connector-db"
-            POSTGRES_DB: "samply.connector"
-            POSTGRES_USER: "samply"
-            POSTGRES_PASS: "samply"
-            STORE_URL: "http://store:8080/fhir"
-            QUERY_LANGUAGE: "CQL"
-            MDR_URL: "https://mdr.germanbiobanknode.de/v3/api/mdr"
-            HTTP_PROXY: "http://proxy.example.de:8080"
-            PROXY_USER: "testUser"
-            PROXY_PASS: "testPassword
-          networks:
-            - "samply"
-      .......
-      
 
 
 * If you see database connection errors of Store or Connector, open a second terminal and run `docker-compose stop` followed by `docker-compose start`. Database connection problems should only occur at the first start because the store and the connector doesn't wait for the databases to be ready. Both try to connect at startup which might be to early.

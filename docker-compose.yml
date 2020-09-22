@@ -1,5 +1,6 @@
 version: '3.4'
 services:
+
   store:
     container_name: "store"
     image: "samply/blaze:0.8.0-beta.3"
@@ -43,6 +44,7 @@ services:
     depends_on:
       - "connector-db"
     restart: "always"
+
   connector-db:
     container_name: "connector-db"
     image: "postgres:9.6"
