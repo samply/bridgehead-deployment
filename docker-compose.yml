@@ -2,41 +2,26 @@ version: '3.4'
 services:
   store:
     container_name: "store"
-    image: "samply/blaze:0.7.0"
+    image: "samply/blaze:0.8.0-beta.3"
     environment:
       BASE_URL: "http://store:8080"
-      DATABASE_URI: "datomic:free://store-db:4334/dev?password=datomic"
-      JVM_OPTS: "-server -Xmx4g -XX:+UseG1GC"
+      DB_DIR: "/app/data/db"
+      JAVA_TOOL_OPTIONS: "-Xms4g -Xmx4g -XX:+UseG1GC"
     networks:
       - "samply"
-      - "store-db"
+    volumes:
+      - "store-db-data:/app/data"
     ports:
       - "8080:8080"
-    depends_on:
-      - "store-db"
-    restart: "always"
-  store-db:
-    container_name: "store-db"
-    image: "akiel/datomic-free:0.9.5703-2"
-    environment:
-      ALT_HOST: "store-db"
-      XMS: "-Xms1g"
-      XMX: "-Xmx1g"
-      ADMIN_PASSWORD: "admin"
-      DATOMIC_PASSWORD: "datomic"
-    networks:
-      - "store-db"
-    volumes:
-      - "store-db-data:/data"
     restart: "always"
 
   blaze-quality-reporting-ui:
     container_name: "blaze-quality-reporting-ui"
-    image: "samply/blaze-quality-reporting-ui:0.2.0"
+    image: "samply/blaze-quality-reporting-ui:0.7.2"
     networks:
-      - "store-db"
+      - "samply"
     ports:
-      - "8000:80"
+      - "8081:80"
     restart: "always"
 
   connector:
@@ -73,8 +58,6 @@ services:
 
 networks:
   samply:
-    driver: "bridge"
-  store-db:
     driver: "bridge"
   connector-db:
     driver: "bridge"
