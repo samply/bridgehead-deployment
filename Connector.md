@@ -1,6 +1,6 @@
 [1]: <https://www.enterprisedb.com/downloads/postgres-postgresql-downloads>
 [2]: <https://tomcat.apache.org/download-80.cgi>
-[3]: <https://github.com/samply/bridgehead-deployment/releases/download/v1.0/share-client-5.6.4.war>
+[3]: <https://github.com/samply/bridgehead-deployment/releases/download/v1.2/share-client-6.13.0.war>
 
 # Windows
 
@@ -26,7 +26,7 @@
 * Webapp
     * [Download Connector][3] .war file
     * Delete all folders in `${tomcat}/webapps/`
-    * Rename share-client-5.6.4.war to ROOT.war and move to `${tomcat}/webapps/`
+    * Rename share-client-6.13.0.war to ROOT.war and move to `${tomcat}/webapps/`
     * Startup Tomcat once: Open "Command Prompt" as administrator
         * `${tomcat}/bin/startup.bat`
         * `${tomcat}/bin/shutdown.bat`
@@ -119,7 +119,7 @@ WantedBy=multi-user.target" > /etc/systemd/system/tomcat-connector.service'
 [Download Connector][3] .war file, eg. with `wget <URL>`
 ```
 sudo rm -r /opt/tomcat-connector/webapps/*
-mv share-client-5.6.4.war /opt/tomcat-connector/webapps/ROOT.war
+mv share-client-6.13.0.war /opt/tomcat-connector/webapps/ROOT.war
 
 sudo systemctl daemon-reload
 sudo systemctl start tomcat-connector
