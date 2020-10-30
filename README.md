@@ -3,8 +3,8 @@
 [docker]: <https://docs.docker.com/install>
 
 [store]: <http://localhost:8080/fhir>
-[man-store]: <https://alexanderkiel.gitbook.io/blaze/deployment/manual-deployment>
-[env-store]: <https://alexanderkiel.gitbook.io/blaze/deployment/environment-variables>
+[man-store]: <https://github.com/samply/blaze/blob/master/docs/deployment/manual-deployment.md>
+[env-store]: <https://github.com/samply/blaze/blob/master/docs/deployment/environment-variables.md>
 
 [connector]: <http://localhost:8082/>
 [man-connector]: <Connector.md>
@@ -80,11 +80,11 @@ Add Environments in docker-compose.yml (remove user and password environments if
       services:
         store:
           container_name: "store"
-          image: "samply/blaze:0.8.0-beta.3"
+          image: "samply/blaze:0.8.0"
           environment:
             BASE_URL: "http://store:8080"
             DB_DIR: "/app/data/db"
-            JAVA_TOOL_OPTIONS: "-Xms4g -Xmx4g -XX:+UseG1GC"
+            JAVA_TOOL_OPTIONS: "-Xmx4g -XX:+UseG1GC"
             PROXY_HOST: "http://proxy.example.de"
             PROXY_PORT: "8080"
             PROXY_USER: "testUser"
@@ -96,7 +96,7 @@ Add Environments in docker-compose.yml (remove user and password environments if
       
       connector:
           container_name: "connector"
-          image: "martinbreu/connector:5.6.4"
+          image: "samply/connector:6.13.0"
           environment:
             POSTGRES_HOST: "connector-db"
             POSTGRES_DB: "samply.connector"
