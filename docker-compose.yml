@@ -3,7 +3,7 @@ services:
 
   store:
     container_name: "store"
-    image: "samply/blaze:0.8.0-beta.3"
+    image: "samply/blaze:0.8.0"
     environment:
       BASE_URL: "http://store:8080"
       JAVA_TOOL_OPTIONS: "-Xmx4g -XX:+UseG1GC"
