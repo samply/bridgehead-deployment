@@ -2,20 +2,10 @@
 [bbmri]: <http://www.bbmri-eric.eu>
 [docker]: <https://docs.docker.com/install>
 
-[store]: <http://localhost:8080/fhir>
 [man-store]: <https://github.com/samply/blaze/blob/master/docs/deployment/manual-deployment.md>
 [env-store]: <https://github.com/samply/blaze/blob/master/docs/deployment/environment-variables.md>
 
-[connector]: <http://localhost:8082/>
 [man-connector]: <Connector.md>
-[connector-user]: <http://localhost:8082/admin/user_list.xhtml>
-[connector-login]: <http://localhost:8082/login.xhtml>
-[connector-register]: <http://localhost:8082/admin/broker_list.xhtml>
-[connector-credentials]: <http://localhost:8082/admin/credentials_list.xhtml>
-[connector-config]: <http://localhost:8082/admin/configuration.xhtml>
-[connector-jobs]: <http://localhost:8082/admin/job_list.xhtml>
-
-[quality-ui]: <http://localhost:8081>
 [quality-ui-github]:<https://github.com/samply/blaze-quality-reporting-ui>
 
 
