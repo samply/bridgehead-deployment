@@ -1,0 +1,1435 @@
+{
+  "entry": [
+    {
+      "fullUrl": "http://example.com/Patient/bbmri-0",
+      "request": {
+        "method": "PUT",
+        "url": "Patient/bbmri-0"
+      },
+      "resource": {
+        "birthDate": "1989-11-18",
+        "gender": "male",
+        "id": "bbmri-0",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Patient"
+          ]
+        },
+        "resourceType": "Patient"
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Observation/0-bmi",
+      "request": {
+        "method": "PUT",
+        "url": "Observation/0-bmi"
+      },
+      "resource": {
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "39156-5",
+              "system": "http://loinc.org"
+            }
+          ]
+        },
+        "effectiveDateTime": "2005-06-17",
+        "id": "0-bmi",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Bmi"
+          ]
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        },
+        "valueQuantity": {
+          "code": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "unit": "kg/m2",
+          "value": 36.7
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Observation/bbmri-0-body-height",
+      "request": {
+        "method": "PUT",
+        "url": "Observation/bbmri-0-body-height"
+      },
+      "resource": {
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "8302-2",
+              "system": "http://loinc.org"
+            }
+          ]
+        },
+        "effectiveDateTime": "2005-06-17",
+        "id": "bbmri-0-body-height",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/BodyHeight"
+          ]
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        },
+        "valueQuantity": {
+          "code": "cm",
+          "system": "http://unitsofmeasure.org",
+          "unit": "cm",
+          "value": 199
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Observation/bbmri-0-body-weight",
+      "request": {
+        "method": "PUT",
+        "url": "Observation/bbmri-0-body-weight"
+      },
+      "resource": {
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "29463-7",
+              "system": "http://loinc.org"
+            }
+          ]
+        },
+        "effectiveDateTime": "2005-06-17",
+        "id": "bbmri-0-body-weight",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/BodyWeight"
+          ]
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        },
+        "valueQuantity": {
+          "code": "kg",
+          "system": "http://unitsofmeasure.org",
+          "unit": "kg",
+          "value": 145
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Condition/bbmri-0-condition-0",
+      "request": {
+        "method": "PUT",
+        "url": "Condition/bbmri-0-condition-0"
+      },
+      "resource": {
+        "code": {
+          "coding": [
+            {
+              "code": "Z88.8",
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "version": "2016"
+            }
+          ]
+        },
+        "id": "bbmri-0-condition-0",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Condition"
+          ]
+        },
+        "onsetDateTime": "2005-06-17",
+        "resourceType": "Condition",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Condition/bbmri-0-condition-1",
+      "request": {
+        "method": "PUT",
+        "url": "Condition/bbmri-0-condition-1"
+      },
+      "resource": {
+        "code": {
+          "coding": [
+            {
+              "code": "K47.9",
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "version": "2016"
+            }
+          ]
+        },
+        "id": "bbmri-0-condition-1",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Condition"
+          ]
+        },
+        "onsetDateTime": "2005-06-17",
+        "resourceType": "Condition",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Condition/bbmri-0-condition-2",
+      "request": {
+        "method": "PUT",
+        "url": "Condition/bbmri-0-condition-2"
+      },
+      "resource": {
+        "code": {
+          "coding": [
+            {
+              "code": "E52.6",
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "version": "2016"
+            }
+          ]
+        },
+        "id": "bbmri-0-condition-2",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Condition"
+          ]
+        },
+        "onsetDateTime": "2005-06-17",
+        "resourceType": "Condition",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Condition/bbmri-0-condition-3",
+      "request": {
+        "method": "PUT",
+        "url": "Condition/bbmri-0-condition-3"
+      },
+      "resource": {
+        "code": {
+          "coding": [
+            {
+              "code": "N50.0",
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "version": "2016"
+            }
+          ]
+        },
+        "id": "bbmri-0-condition-3",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Condition"
+          ]
+        },
+        "onsetDateTime": "2005-06-17",
+        "resourceType": "Condition",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Condition/bbmri-0-condition-4",
+      "request": {
+        "method": "PUT",
+        "url": "Condition/bbmri-0-condition-4"
+      },
+      "resource": {
+        "code": {
+          "coding": [
+            {
+              "code": "C15.8",
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "version": "2016"
+            }
+          ]
+        },
+        "id": "bbmri-0-condition-4",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Condition"
+          ]
+        },
+        "onsetDateTime": "2005-06-17",
+        "resourceType": "Condition",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Condition/bbmri-0-condition-5",
+      "request": {
+        "method": "PUT",
+        "url": "Condition/bbmri-0-condition-5"
+      },
+      "resource": {
+        "code": {
+          "coding": [
+            {
+              "code": "I80.1",
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "version": "2016"
+            }
+          ]
+        },
+        "id": "bbmri-0-condition-5",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Condition"
+          ]
+        },
+        "onsetDateTime": "2005-06-17",
+        "resourceType": "Condition",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Observation/bbmri-0-tobacco-use",
+      "request": {
+        "method": "PUT",
+        "url": "Observation/bbmri-0-tobacco-use"
+      },
+      "resource": {
+        "code": {
+          "coding": [
+            {
+              "code": "72166-2",
+              "system": "http://loinc.org"
+            }
+          ]
+        },
+        "effectiveDateTime": "2005-06-17",
+        "id": "bbmri-0-tobacco-use",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/TobaccoUse"
+          ]
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "code": "LA15920-4",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Specimen/bbmri-0-specimen-0",
+      "request": {
+        "method": "PUT",
+        "url": "Specimen/bbmri-0-specimen-0"
+      },
+      "resource": {
+        "collection": {
+          "bodySite": {
+            "coding": [
+              {
+                "code": "C64.8",
+                "system": "urn:oid:2.16.840.1.113883.6.43.1"
+              }
+            ]
+          },
+          "collectedDateTime": "2005-06-17",
+          "fastingStatusCodeableConcept": {
+            "coding": [
+              {
+                "code": "FNA",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0916"
+              }
+            ]
+          }
+        },
+        "extension": [
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/StorageTemperature",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "temperatureOther",
+                  "system": "https://fhir.bbmri.de/CodeSystem/StorageTemperature"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/SampleDiagnosis",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "R12.7",
+                  "system": "http://hl7.org/fhir/sid/icd-10"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/Custodian",
+            "valueReference": {
+              "reference": "Organization/collection-8"
+            }
+          }
+        ],
+        "id": "bbmri-0-specimen-0",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Specimen"
+          ]
+        },
+        "resourceType": "Specimen",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        },
+        "type": {
+          "coding": [
+            {
+              "code": "saliva",
+              "system": "https://fhir.bbmri.de/CodeSystem/SampleMaterialType"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Specimen/bbmri-0-specimen-1",
+      "request": {
+        "method": "PUT",
+        "url": "Specimen/bbmri-0-specimen-1"
+      },
+      "resource": {
+        "collection": {
+          "bodySite": {
+            "coding": [
+              {
+                "code": "C76.8",
+                "system": "urn:oid:2.16.840.1.113883.6.43.1"
+              }
+            ]
+          },
+          "collectedDateTime": "2005-06-17",
+          "fastingStatusCodeableConcept": {
+            "coding": [
+              {
+                "code": "NG",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0916"
+              }
+            ]
+          }
+        },
+        "extension": [
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/StorageTemperature",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "temperatureRoom",
+                  "system": "https://fhir.bbmri.de/CodeSystem/StorageTemperature"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/SampleDiagnosis",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "I49.4",
+                  "system": "http://hl7.org/fhir/sid/icd-10"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/Custodian",
+            "valueReference": {
+              "reference": "Organization/collection-7"
+            }
+          }
+        ],
+        "id": "bbmri-0-specimen-1",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Specimen"
+          ]
+        },
+        "resourceType": "Specimen",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        },
+        "type": {
+          "coding": [
+            {
+              "code": "tissue",
+              "system": "https://fhir.bbmri.de/CodeSystem/SampleMaterialType"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Specimen/bbmri-0-specimen-2",
+      "request": {
+        "method": "PUT",
+        "url": "Specimen/bbmri-0-specimen-2"
+      },
+      "resource": {
+        "collection": {
+          "bodySite": {
+            "coding": [
+              {
+                "code": "C88.4",
+                "system": "urn:oid:2.16.840.1.113883.6.43.1"
+              }
+            ]
+          },
+          "collectedDateTime": "2005-06-17",
+          "fastingStatusCodeableConcept": {
+            "coding": [
+              {
+                "code": "F",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0916"
+              }
+            ]
+          }
+        },
+        "extension": [
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/StorageTemperature",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "temperatureGN",
+                  "system": "https://fhir.bbmri.de/CodeSystem/StorageTemperature"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/SampleDiagnosis",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "Y00.2",
+                  "system": "http://hl7.org/fhir/sid/icd-10"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/Custodian",
+            "valueReference": {
+              "reference": "Organization/collection-7"
+            }
+          }
+        ],
+        "id": "bbmri-0-specimen-2",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Specimen"
+          ]
+        },
+        "resourceType": "Specimen",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        },
+        "type": {
+          "coding": [
+            {
+              "code": "csf-liquor",
+              "system": "https://fhir.bbmri.de/CodeSystem/SampleMaterialType"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Specimen/bbmri-0-specimen-3",
+      "request": {
+        "method": "PUT",
+        "url": "Specimen/bbmri-0-specimen-3"
+      },
+      "resource": {
+        "collection": {
+          "bodySite": {
+            "coding": [
+              {
+                "code": "C30.7",
+                "system": "urn:oid:2.16.840.1.113883.6.43.1"
+              }
+            ]
+          },
+          "collectedDateTime": "2005-06-17",
+          "fastingStatusCodeableConcept": {
+            "coding": [
+              {
+                "code": "FNA",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0916"
+              }
+            ]
+          }
+        },
+        "extension": [
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/StorageTemperature",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "temperatureRoom",
+                  "system": "https://fhir.bbmri.de/CodeSystem/StorageTemperature"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/SampleDiagnosis",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "E77.4",
+                  "system": "http://hl7.org/fhir/sid/icd-10"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/Custodian",
+            "valueReference": {
+              "reference": "Organization/collection-6"
+            }
+          }
+        ],
+        "id": "bbmri-0-specimen-3",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Specimen"
+          ]
+        },
+        "resourceType": "Specimen",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        },
+        "type": {
+          "coding": [
+            {
+              "code": "csf-liquor",
+              "system": "https://fhir.bbmri.de/CodeSystem/SampleMaterialType"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Specimen/bbmri-0-specimen-4",
+      "request": {
+        "method": "PUT",
+        "url": "Specimen/bbmri-0-specimen-4"
+      },
+      "resource": {
+        "collection": {
+          "bodySite": {
+            "coding": [
+              {
+                "code": "C81.3",
+                "system": "urn:oid:2.16.840.1.113883.6.43.1"
+              }
+            ]
+          },
+          "collectedDateTime": "2005-06-17",
+          "fastingStatusCodeableConcept": {
+            "coding": [
+              {
+                "code": "NF",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0916"
+              }
+            ]
+          }
+        },
+        "extension": [
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/StorageTemperature",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "temperatureRoom",
+                  "system": "https://fhir.bbmri.de/CodeSystem/StorageTemperature"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/SampleDiagnosis",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "G23.9",
+                  "system": "http://hl7.org/fhir/sid/icd-10"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/Custodian",
+            "valueReference": {
+              "reference": "Organization/collection-0"
+            }
+          }
+        ],
+        "id": "bbmri-0-specimen-4",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Specimen"
+          ]
+        },
+        "resourceType": "Specimen",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        },
+        "type": {
+          "coding": [
+            {
+              "code": "urine",
+              "system": "https://fhir.bbmri.de/CodeSystem/SampleMaterialType"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Specimen/bbmri-0-specimen-5",
+      "request": {
+        "method": "PUT",
+        "url": "Specimen/bbmri-0-specimen-5"
+      },
+      "resource": {
+        "collection": {
+          "bodySite": {
+            "coding": [
+              {
+                "code": "C63.3",
+                "system": "urn:oid:2.16.840.1.113883.6.43.1"
+              }
+            ]
+          },
+          "collectedDateTime": "2005-06-17",
+          "fastingStatusCodeableConcept": {
+            "coding": [
+              {
+                "code": "NF",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0916"
+              }
+            ]
+          }
+        },
+        "extension": [
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/StorageTemperature",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "temperatureLN",
+                  "system": "https://fhir.bbmri.de/CodeSystem/StorageTemperature"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/SampleDiagnosis",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "P78.3",
+                  "system": "http://hl7.org/fhir/sid/icd-10"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/Custodian",
+            "valueReference": {
+              "reference": "Organization/collection-9"
+            }
+          }
+        ],
+        "id": "bbmri-0-specimen-5",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Specimen"
+          ]
+        },
+        "resourceType": "Specimen",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        },
+        "type": {
+          "coding": [
+            {
+              "code": "tissue-formalin",
+              "system": "https://fhir.bbmri.de/CodeSystem/SampleMaterialType"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Specimen/bbmri-0-specimen-6",
+      "request": {
+        "method": "PUT",
+        "url": "Specimen/bbmri-0-specimen-6"
+      },
+      "resource": {
+        "collection": {
+          "bodySite": {
+            "coding": [
+              {
+                "code": "C26.2",
+                "system": "urn:oid:2.16.840.1.113883.6.43.1"
+              }
+            ]
+          },
+          "collectedDateTime": "2005-06-17",
+          "fastingStatusCodeableConcept": {
+            "coding": [
+              {
+                "code": "NF",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0916"
+              }
+            ]
+          }
+        },
+        "extension": [
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/StorageTemperature",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "temperatureRoom",
+                  "system": "https://fhir.bbmri.de/CodeSystem/StorageTemperature"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/SampleDiagnosis",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "S31.2",
+                  "system": "http://hl7.org/fhir/sid/icd-10"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/Custodian",
+            "valueReference": {
+              "reference": "Organization/collection-3"
+            }
+          }
+        ],
+        "id": "bbmri-0-specimen-6",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Specimen"
+          ]
+        },
+        "resourceType": "Specimen",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        },
+        "type": {
+          "coding": [
+            {
+              "code": "stool-faeces",
+              "system": "https://fhir.bbmri.de/CodeSystem/SampleMaterialType"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Specimen/bbmri-0-specimen-7",
+      "request": {
+        "method": "PUT",
+        "url": "Specimen/bbmri-0-specimen-7"
+      },
+      "resource": {
+        "collection": {
+          "bodySite": {
+            "coding": [
+              {
+                "code": "C29.0",
+                "system": "urn:oid:2.16.840.1.113883.6.43.1"
+              }
+            ]
+          },
+          "collectedDateTime": "2005-06-17",
+          "fastingStatusCodeableConcept": {
+            "coding": [
+              {
+                "code": "NF",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0916"
+              }
+            ]
+          }
+        },
+        "extension": [
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/StorageTemperature",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "temperatureGN",
+                  "system": "https://fhir.bbmri.de/CodeSystem/StorageTemperature"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/SampleDiagnosis",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "E40.8",
+                  "system": "http://hl7.org/fhir/sid/icd-10"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/Custodian",
+            "valueReference": {
+              "reference": "Organization/collection-8"
+            }
+          }
+        ],
+        "id": "bbmri-0-specimen-7",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Specimen"
+          ]
+        },
+        "resourceType": "Specimen",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        },
+        "type": {
+          "coding": [
+            {
+              "code": "whole-blood",
+              "system": "https://fhir.bbmri.de/CodeSystem/SampleMaterialType"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Specimen/bbmri-0-specimen-8",
+      "request": {
+        "method": "PUT",
+        "url": "Specimen/bbmri-0-specimen-8"
+      },
+      "resource": {
+        "collection": {
+          "bodySite": {
+            "coding": [
+              {
+                "code": "C59.9",
+                "system": "urn:oid:2.16.840.1.113883.6.43.1"
+              }
+            ]
+          },
+          "collectedDateTime": "2005-06-17",
+          "fastingStatusCodeableConcept": {
+            "coding": [
+              {
+                "code": "NF",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0916"
+              }
+            ]
+          }
+        },
+        "extension": [
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/StorageTemperature",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "temperatureRoom",
+                  "system": "https://fhir.bbmri.de/CodeSystem/StorageTemperature"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/SampleDiagnosis",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "D89.9",
+                  "system": "http://hl7.org/fhir/sid/icd-10"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/Custodian",
+            "valueReference": {
+              "reference": "Organization/collection-1"
+            }
+          }
+        ],
+        "id": "bbmri-0-specimen-8",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Specimen"
+          ]
+        },
+        "resourceType": "Specimen",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        },
+        "type": {
+          "coding": [
+            {
+              "code": "blood-plasma",
+              "system": "https://fhir.bbmri.de/CodeSystem/SampleMaterialType"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Specimen/bbmri-0-specimen-9",
+      "request": {
+        "method": "PUT",
+        "url": "Specimen/bbmri-0-specimen-9"
+      },
+      "resource": {
+        "collection": {
+          "bodySite": {
+            "coding": [
+              {
+                "code": "C03.9",
+                "system": "urn:oid:2.16.840.1.113883.6.43.1"
+              }
+            ]
+          },
+          "collectedDateTime": "2005-06-17",
+          "fastingStatusCodeableConcept": {
+            "coding": [
+              {
+                "code": "NG",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0916"
+              }
+            ]
+          }
+        },
+        "extension": [
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/StorageTemperature",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "temperatureRoom",
+                  "system": "https://fhir.bbmri.de/CodeSystem/StorageTemperature"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/SampleDiagnosis",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "Y32.6",
+                  "system": "http://hl7.org/fhir/sid/icd-10"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/Custodian",
+            "valueReference": {
+              "reference": "Organization/collection-8"
+            }
+          }
+        ],
+        "id": "bbmri-0-specimen-9",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Specimen"
+          ]
+        },
+        "resourceType": "Specimen",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        },
+        "type": {
+          "coding": [
+            {
+              "code": "csf-liquor",
+              "system": "https://fhir.bbmri.de/CodeSystem/SampleMaterialType"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Specimen/bbmri-0-specimen-10",
+      "request": {
+        "method": "PUT",
+        "url": "Specimen/bbmri-0-specimen-10"
+      },
+      "resource": {
+        "collection": {
+          "bodySite": {
+            "coding": [
+              {
+                "code": "C48.7",
+                "system": "urn:oid:2.16.840.1.113883.6.43.1"
+              }
+            ]
+          },
+          "collectedDateTime": "2005-06-17",
+          "fastingStatusCodeableConcept": {
+            "coding": [
+              {
+                "code": "FNA",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0916"
+              }
+            ]
+          }
+        },
+        "extension": [
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/StorageTemperature",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "temperatureRoom",
+                  "system": "https://fhir.bbmri.de/CodeSystem/StorageTemperature"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/SampleDiagnosis",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "S53.7",
+                  "system": "http://hl7.org/fhir/sid/icd-10"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/Custodian",
+            "valueReference": {
+              "reference": "Organization/collection-8"
+            }
+          }
+        ],
+        "id": "bbmri-0-specimen-10",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Specimen"
+          ]
+        },
+        "resourceType": "Specimen",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        },
+        "type": {
+          "coding": [
+            {
+              "code": "peripheral-blood-cells-vital",
+              "system": "https://fhir.bbmri.de/CodeSystem/SampleMaterialType"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Specimen/bbmri-0-specimen-11",
+      "request": {
+        "method": "PUT",
+        "url": "Specimen/bbmri-0-specimen-11"
+      },
+      "resource": {
+        "collection": {
+          "bodySite": {
+            "coding": [
+              {
+                "code": "C87.0",
+                "system": "urn:oid:2.16.840.1.113883.6.43.1"
+              }
+            ]
+          },
+          "collectedDateTime": "2005-06-17",
+          "fastingStatusCodeableConcept": {
+            "coding": [
+              {
+                "code": "NF",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0916"
+              }
+            ]
+          }
+        },
+        "extension": [
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/StorageTemperature",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "temperatureRoom",
+                  "system": "https://fhir.bbmri.de/CodeSystem/StorageTemperature"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/SampleDiagnosis",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "X20.7",
+                  "system": "http://hl7.org/fhir/sid/icd-10"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/Custodian",
+            "valueReference": {
+              "reference": "Organization/collection-6"
+            }
+          }
+        ],
+        "id": "bbmri-0-specimen-11",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Specimen"
+          ]
+        },
+        "resourceType": "Specimen",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        },
+        "type": {
+          "coding": [
+            {
+              "code": "tissue-frozen",
+              "system": "https://fhir.bbmri.de/CodeSystem/SampleMaterialType"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Specimen/bbmri-0-specimen-12",
+      "request": {
+        "method": "PUT",
+        "url": "Specimen/bbmri-0-specimen-12"
+      },
+      "resource": {
+        "collection": {
+          "bodySite": {
+            "coding": [
+              {
+                "code": "C09.7",
+                "system": "urn:oid:2.16.840.1.113883.6.43.1"
+              }
+            ]
+          },
+          "collectedDateTime": "2005-06-17",
+          "fastingStatusCodeableConcept": {
+            "coding": [
+              {
+                "code": "NG",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0916"
+              }
+            ]
+          }
+        },
+        "extension": [
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/StorageTemperature",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "temperatureOther",
+                  "system": "https://fhir.bbmri.de/CodeSystem/StorageTemperature"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/SampleDiagnosis",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "N45.6",
+                  "system": "http://hl7.org/fhir/sid/icd-10"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/Custodian",
+            "valueReference": {
+              "reference": "Organization/collection-0"
+            }
+          }
+        ],
+        "id": "bbmri-0-specimen-12",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Specimen"
+          ]
+        },
+        "resourceType": "Specimen",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        },
+        "type": {
+          "coding": [
+            {
+              "code": "dna",
+              "system": "https://fhir.bbmri.de/CodeSystem/SampleMaterialType"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.com/Specimen/bbmri-0-specimen-13",
+      "request": {
+        "method": "PUT",
+        "url": "Specimen/bbmri-0-specimen-13"
+      },
+      "resource": {
+        "collection": {
+          "bodySite": {
+            "coding": [
+              {
+                "code": "C31.4",
+                "system": "urn:oid:2.16.840.1.113883.6.43.1"
+              }
+            ]
+          },
+          "collectedDateTime": "2005-06-17",
+          "fastingStatusCodeableConcept": {
+            "coding": [
+              {
+                "code": "NF",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0916"
+              }
+            ]
+          }
+        },
+        "extension": [
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/StorageTemperature",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "temperature2to10",
+                  "system": "https://fhir.bbmri.de/CodeSystem/StorageTemperature"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/SampleDiagnosis",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "code": "N40.3",
+                  "system": "http://hl7.org/fhir/sid/icd-10"
+                }
+              ]
+            }
+          },
+          {
+            "url": "https://fhir.bbmri.de/StructureDefinition/Custodian",
+            "valueReference": {
+              "reference": "Organization/collection-4"
+            }
+          }
+        ],
+        "id": "bbmri-0-specimen-13",
+        "meta": {
+          "profile": [
+            "https://fhir.bbmri.de/StructureDefinition/Specimen"
+          ]
+        },
+        "resourceType": "Specimen",
+        "subject": {
+          "reference": "Patient/bbmri-0"
+        },
+        "type": {
+          "coding": [
+            {
+              "code": "tissue-paxgene-or-else",
+              "system": "https://fhir.bbmri.de/CodeSystem/SampleMaterialType"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "id": "d6b1b94c-0a9f-4992-bf09-977c43708798",
+  "resourceType": "Bundle",
+  "type": "transaction"
+}
