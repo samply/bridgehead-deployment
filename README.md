@@ -14,14 +14,17 @@
 [man-store]: <https://github.com/samply/blaze/blob/master/docs/deployment/manual-deployment.md>
 [env-store]: <https://github.com/samply/blaze/blob/master/docs/deployment/environment-variables.md>
 
+[bbmri-fhir-gen]: <https://github.com/samply/bbmri-fhir-gen>
 [blazectl]: <https://github.com/samply/blazectl>
 
 [man-connector]: <Connector.md>
-[quality-ui-github]:<https://github.com/samply/blaze-quality-reporting-ui>
 
 [store-src]: <https://github.com/samply/blaze>
 [connector-src]: <https://github.com/samply/share-client>
 
+[quality-ui-github]:<https://github.com/samply/blaze-quality-reporting-ui>
+[join-sl]: <https://samply.github.io/bbmri-fhir-ig/howtoJoin.html>
+[samply]: <https://github.com/samply>
 
 # Bridgehead Deployment
 
@@ -103,8 +106,8 @@ You will first need to log in as an administrator with the URL http://localhost:
   * "Automatic reply": Set this to be `Total Size`
 * Click "Join" to start the registration process.
 * You should now have a list containing exactly one broker. You will notice that the "Status" box is empty.
-* You should soon receive an email with the registration token. Paste this into the "Status" box, then click "Activate"
-* If you are setting up a Bridgehead production instance, you should also send an email to `feedback@germanbiobanknode.de` containing `your used email address` and `desired biobank name`
+* You should receive an email with the registration token. Paste this into the "Status" box, then click "Activate". If you do not immediately receive an email, please send an email to `feedback@germanbiobanknode.de`.
+* If you are setting up a Bridgehead production instance, you should also send an email to `feedback@germanbiobanknode.de`, informing us that you have added a new biobank. Your email should contain an email address that we can use for correspondence with you, plus the your desired site name. We may invite you to a telephone call, where we formally process your registeration.
 
 ### Monitoring
 * Activate Monitoring (Icinga will send a test query periodically to send you an email if errors occur)
@@ -131,9 +134,15 @@ The full list of jobs can be viewed under the job page http://localhost:8082/adm
 ## Checking your newly installed Bridgehead
 We will load some test data and then run a query to see if it shows up.
 
-First, install [blazectl][blazectl]. Run the following commands:
+First, install [bbmri-fhir-gen][bbmri-fhir-gen]. Run the following command:
 
-      blazectl --server http://localhost:8080/fhir upload ExampleData
+      bbmri-fhir-gen TestData -n 10
+
+This will generate test data for 10 patients, and place it in the directory `TestData`.
+
+Next, install [blazectl][blazectl]. Run the following commands:
+
+      blazectl --server http://localhost:8080/fhir upload TestData
       blazectl --server http://localhost:8080/fhir count-resources
 
 If both of them complete successfully, it means that the test data has successfully been uploaded to the Blaze Store.
@@ -141,6 +150,11 @@ If both of them complete successfully, it means that the test data has successfu
 Open the [Sample Locator][sl] and hit the "SEND" button. You may need to wait for a minute before all results are returned. Click the "Login" link to log in via the academic institution where you work (AAI). You should now see a list of the biobanks known to the Sample Locator.
 
 If your biobank is present, and it contains non-zero counts of patients and samples, then your installation was successful.
+
+If you wish to remove the test data, you can do so by simply deleting the Docker volume for the Blaze Store database:
+
+      docker-compose down
+      docker volume rm store-db-data
 
 ## Manual installation
 The installation described here uses Docker, meaning that you don't have to worry about configuring or installing the Bridgehead components - Docker does it all for you. If you do not wish to use Docker, you can install all of the software directly on your machine, as follows:
@@ -154,7 +168,6 @@ Source code for components deployed by `docker-compose.yml`:
 
 * [Store][store-src]
 * [Connector][connector-src]
-* [FHIR Quality Reporting Authoring UI][quality-ui-github]
 
 
 ## Optional configuration:
@@ -263,3 +276,9 @@ Add environments variables in `docker-compose.yml` (remove user and password env
     * Open [credentials page][connector-credentials]
         - Delete all instances of`Lokales Datenmanagement`
         - for "Ziel" select `Lokales Datenmanagement`, provide decrypted CREDENTIALS in "Benutzername" and "Passwort", select "Zugangsdaten hinzufügen"
+
+
+##Useful links
+* [FHIR Quality Reporting Authoring UI][quality-ui-github]
+* [How to join Sample Locator][join-sl]
+* [Samply code repositories][samply]
