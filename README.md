@@ -106,8 +106,8 @@ You will first need to log in as an administrator with the URL http://localhost:
   * "Automatic reply": Set this to be `Total Size`
 * Click "Join" to start the registration process.
 * You should now have a list containing exactly one broker. You will notice that the "Status" box is empty.
-* You should receive an email with the registration token. Paste this into the "Status" box, then click "Activate". If you do not immediately receive an email, please send an email to `feedback@germanbiobanknode.de`.
-* If you are setting up a Bridgehead production instance, you should also send an email to `feedback@germanbiobanknode.de`, informing us that you have added a new biobank. Your email should contain an email address that we can use for correspondence with you, plus the your desired site name. We may invite you to a telephone call, where we formally process your registeration.
+* You should receive an email with the registration token. Paste this into the "Status" box, then click "Activate". If you do not immediately receive your token, please contact us at `feedback@germanbiobanknode.de`.
+* If you are setting up a Bridgehead production instance, you should also send an email to `feedback@germanbiobanknode.de`, informing us that you have added a new biobank. You need to give us an email address that we can use for correspondence with you, plus the your desired site name. We may invite you to a telephone call, where we formally process your registration.
 
 ### Monitoring
 * Activate Monitoring (Icinga will send a test query periodically to send you an email if errors occur)
@@ -278,7 +278,7 @@ Add environments variables in `docker-compose.yml` (remove user and password env
         - for "Ziel" select `Lokales Datenmanagement`, provide decrypted CREDENTIALS in "Benutzername" and "Passwort", select "Zugangsdaten hinzufügen"
 
 
-##Useful links
+## Useful links
 * [FHIR Quality Reporting Authoring UI][quality-ui-github]
 * [How to join Sample Locator][join-sl]
 * [Samply code repositories][samply]
