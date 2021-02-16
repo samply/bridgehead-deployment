@@ -3,10 +3,10 @@ services:
 
   store:
     container_name: "store"
-    image: "samply/blaze:0.8.0"
+    image: "samply/blaze:0.10.3"
     environment:
       BASE_URL: "http://store:8080"
-      JAVA_TOOL_OPTIONS: "-Xmx4g -XX:+UseG1GC"
+      JAVA_TOOL_OPTIONS: "-Xmx4g"
     networks:
       - "samply"
     volumes:

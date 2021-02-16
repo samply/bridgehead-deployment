@@ -180,11 +180,10 @@ Add environments variables in `docker-compose.yml` (remove user and password env
       services:
         store:
           container_name: "store"
-          image: "samply/blaze:0.8.0"
+          image: "samply/blaze:0.10.3"
           environment:
             BASE_URL: "http://store:8080"
-            DB_DIR: "/app/data/db"
-            JAVA_TOOL_OPTIONS: "-Xmx4g -XX:+UseG1GC"
+            JAVA_TOOL_OPTIONS: "-Xmx4g"
             PROXY_HOST: "http://proxy.example.de"
             PROXY_PORT: "8080"
             PROXY_USER: "testUser"
