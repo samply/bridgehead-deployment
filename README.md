@@ -90,7 +90,6 @@ To start a Bridgehead on your computer, you will need to follow the following st
 ## Port usage
 Once you have started the Bridgehead, the following components will be visible to you via ports on localhost:
 * Blaze Store: port 8080
-* Blaze QA GUI: port 8081
 * Connector admin: port 8082
 
 ## Connector Administration

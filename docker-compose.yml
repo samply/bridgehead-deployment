@@ -15,15 +15,6 @@ services:
       - "8080:8080"
     restart: "always"
 
-  blaze-quality-reporting-ui:
-    container_name: "blaze-quality-reporting-ui"
-    image: "samply/blaze-quality-reporting-ui:0.7.2"
-    networks:
-      - "samply"
-    ports:
-      - "8081:80"
-    restart: "always"
-
   connector:
     container_name: "connector"
     image: "samply/connector:7.0.0"
