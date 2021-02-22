@@ -94,13 +94,6 @@ You will first need to log in as an administrator with the URL http://localhost:
 * Activate Monitoring (Icinga will send a test query periodically to send you an email if errors occur)
 * Open the config page http://localhost:8082/admin/configuration.xhtml to enable three buttons under "Reporting to central services" and scroll down to save with button "Save"
 
-### Credentials
-* Under http://localhost:8082/admin/credentials_list.xhtml you can see the credentials being used by the Connector.
-* It is possible to add the following credentials:
-  * HTTP Proxy
-  * Local Data Management authentication
-  * Directory Sync (if the feature toggle is enabled)
-
 ### User
 * To enable a user to access the connector, a new user can be created under http://localhost:8082/admin/user_list.xhtml.
 This user has the possibility to view incoming queries
