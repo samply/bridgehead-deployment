@@ -87,8 +87,7 @@ You will first need to log in as an administrator with the URL http://localhost:
   * "Automatic reply": Set this to be `Total Size`
 * Click "Join" to start the registration process.
 * You should now have a list containing exactly one broker. You will notice that the "Status" box is empty.
-* You should receive an email with the registration token. Paste this into the "Status" box, then click "Activate". If you do not immediately receive your token, please contact us at `feedback@germanbiobanknode.de`.
-* If you are setting up a Bridgehead production instance, you should also send an email to `feedback@germanbiobanknode.de`, informing us that you have added a new biobank. You need to give us an email address that we can use for correspondence with you, plus the your desired site name. We may invite you to a telephone call, where we formally process your registration.
+* Send an email to `feedback@germanbiobanknode.de` and let us know that you want to register with one of our Sample Locators. We will then contact you and arrange an appointment for an online registration session, where you will be given a registration token and we will than complete the registration process together. If you wish to keep in contact with us, feel free to request access to our Zulip channel for Sample Locator support.
 
 ### Monitoring
 * Activate Monitoring (Icinga will send a test query periodically to send you an email if errors occur)
