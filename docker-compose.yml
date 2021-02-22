@@ -17,7 +17,7 @@ services:
 
   connector:
     container_name: "connector"
-    image: "samply/connector:7.0.0"
+    image: "samply/share-client:samply-7.2.3"
     environment:
       POSTGRES_HOST: "connector-db"
       POSTGRES_DB: "samply.connector"
