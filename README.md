@@ -38,10 +38,11 @@ The file `docker-compose.yml` contains the the minimum settings needed for insta
 
 To start a Bridgehead on your computer, you will need to follow the following steps:
 
-* [Install Docker][docker] and test with:
+* [Install Docker][docker] and [git][git]and test with:
 
 ```sh
 docker run hello-world
+git --version
 ```
 
 * Download this repository:
@@ -282,6 +283,7 @@ docker volume rm connector-db-data
 [negotiator]: <https://negotiator.bbmri-eric.eu/login.xhtml>
 [bbmri]: <http://www.bbmri-eric.eu>
 [docker]: <https://docs.docker.com/install>
+[git]: <https://www.atlassian.com/git/tutorials/install-git>
 
 [connector-user]:<http://localhost:8082/admin/user_list.xhtml>
 [connector-login]:<http://localhost:8082/admin/login.xhtml>
